@@ -1,0 +1,229 @@
+package com.palmgo.mvapi.map;
+
+import com.palmgo.mvapi.entities.GeoPoint;
+import com.palmgo.mvapi.entities.GeoRect;
+import com.palmgo.mvapi.entities.GeoTilePoint;
+import com.palmgo.mvapi.entities.PixelPoint;
+
+/**
+ * @author liujingzhou
+ * 
+ * 基于WGS84大地基准，SphericalMercator投影方式图片转换
+ * 
+ */
+public class MapTile
+{
+	// google地图相关参数
+	private static double earthRadius = 6378137;
+	private static double minLatitude = -85.05112878;
+	private static double maxLatitude = 85.05112878;
+	private static double minLongitude = -180;
+	private static double maxLongitude = 180;
+
+	// Tile宽高(pixel)
+	public static int tileWidth = 256;
+	public static int tileHeight = 256;
+
+	private static double rad(double d)
+    {
+       return d * Math.PI / 180.0;
+    }
+
+	private static final double CIRCUMFERENCE_IN_METERS = 40075160.0;  
+
+	/**
+	 * @param minValue
+	 *            下边界值
+	 * @param maxValue
+	 *            上边界值 功能：若指定值落在指定范围内，取该值；若指定值小于下边界，取下边界值；若指定值大于上边界，取上边界值
+	 */
+	private static double clip(double n, double minValue, double maxValue)
+	{
+		return Math.min(Math.max(n, minValue), maxValue);
+	}
+
+	/**
+	 * @param zoom
+	 *            缩放等级
+	 * @return 指定缩放等级下，地图的最大宽度和高度(像素值) 功能：计算指定缩放等级的地图的宽和高(像素值)
+	 */
+	public static int mapSize(int zoom)
+	{
+		return tileWidth << zoom;
+	}
+
+	/**
+	 * @param latitude
+	 *            纬度
+	 * @param zoom
+	 *            缩放等级
+	 * @return 地面分辨率(米/像素) 功能：计算指定缩放等级指定纬度的地面分辨率(米/像素)
+	 */
+	public static double groundResolution(double latitude, int zoom)
+	{
+		latitude = clip(latitude, minLatitude, maxLatitude);
+		return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * earthRadius
+				/ mapSize(zoom);
+	}
+
+	public static float metersToEquatorPixels(float meters, int zoom)
+	{
+		int tiles = 1 << zoom;
+		double circumference = tileWidth * tiles;  
+	    return (float)(meters*circumference/CIRCUMFERENCE_IN_METERS);  
+	}  
+
+	/**
+	 * @param latitude
+	 *            纬度
+	 * @param zoom
+	 *            缩放等级
+	 * @param screenDpi
+	 *            屏幕分辨率(dots per inch)
+	 * @return 地图比例尺 功能：指定缩放等级、纬度、屏幕分辨率下的地图比例尺
+	 */
+	public static double mapScale(double latitude, int zoom, int screenDpi)
+	{
+		return groundResolution(latitude, zoom) * screenDpi / 0.0254;
+	}
+
+	/**
+	 * @param latitude
+	 *            纬度
+	 * @param longitude
+	 *            经度
+	 * @param zoom
+	 *            缩放等级
+	 * @return 像素坐标 功能：转换经纬度坐标(WGS-84)为指定缩放等级下的像素坐标
+	 */
+	public static PixelPoint latLongToPixelXY(double latitude,
+			double longitude, int zoom)
+	{
+		PixelPoint rPnt = new PixelPoint();
+
+		int mapSize = mapSize(zoom);
+
+		longitude = clip(longitude, minLongitude, maxLongitude);
+		double x = (longitude + 180) / 360;
+		int pixelX = (int) clip(x * mapSize + 0.5, 0, mapSize - 1);
+
+		latitude = clip(latitude, minLatitude, maxLatitude);
+		double sinLatitude = Math.sin(latitude * Math.PI / 180);
+		double y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude))
+				/ (4 * Math.PI);
+		int pixelY = (int) clip(y * mapSize + 0.5, 0, mapSize - 1);
+
+		rPnt.SetData(pixelX, pixelY);
+		return rPnt;
+	}
+
+	/**
+	 * @param pixelX
+	 *            X方向像素坐标值
+	 * @param pixelY
+	 *            Y方向像素坐标值
+	 * @param zoom
+	 *            缩放等级
+	 * @return 经纬度坐标值 功能：指定缩放等级下的像素坐标转换为经纬度坐标(WGS-84)
+	 */
+	public static GeoPoint pixelXYToLatLong(int pixelX, int pixelY, int zoom)
+	{
+		GeoPoint gPnt = new GeoPoint();
+
+		double mapSize = mapSize(zoom);
+		double x = (clip(pixelX, 0, mapSize - 1) / mapSize) - 0.5;
+		double y = 0.5 - (clip(pixelY, 0, mapSize - 1) / mapSize);
+
+		double latitude = 90 - 360 * Math.atan(Math.exp(-y * 2 * Math.PI))
+				/ Math.PI;
+		double longitude = 360 * x;
+
+		gPnt = new GeoPoint(longitude, latitude);
+
+		return gPnt;
+	}
+
+	/**
+	 * @param pixelX
+	 *            X方向像素坐标值
+	 * @param pixelY
+	 *            Y方向像素坐标值
+	 * @return 瓦片(Tile)坐标值 功能：像素坐标转换为瓦片(Tile)坐标
+	 */
+	public static GeoTilePoint pixelXYToTileXY(int pixelX, int pixelY)
+	{
+		GeoTilePoint rPnt = new GeoTilePoint();
+
+		int tileX = pixelX / tileWidth;
+		int tileY = pixelY / tileHeight;
+		rPnt.SetData(tileX, tileY, 0);
+
+		return rPnt;
+	}
+
+	/**
+	 * @param tileX
+	 *            X方向的瓦片(Tile)坐标值
+	 * @param tileY
+	 *            Y方向的瓦片(Tile)坐标值
+	 * @return 瓦片(Tile)左上角的像素坐标值 功能：转换指定瓦片(Tile)的左上角的坐标值为像素坐标值
+	 */
+	public static PixelPoint tileXYToPixelXY(int tileX, int tileY)
+	{
+		PixelPoint rPnt = new PixelPoint();
+
+		int pixelX = tileX * tileWidth;
+		int pixelY = tileY * tileHeight;
+		rPnt.SetData(pixelX, pixelY);
+
+		return rPnt;
+	}
+
+	/**
+	 * @param tileX
+	 *            X方向的瓦片(Tile)坐标值
+	 * @param tileY
+	 *            Y方向的瓦片(Tile)坐标值
+	 * @param zoom
+	 * 			  缩放等级
+	 * @return 
+	 * 		   	  转换指定瓦片(Tile)的经纬度范围
+	 */
+    public static GeoRect tileXYToLLBound(int tileX, int tileY, int zoom)
+    {
+        PixelPoint pt1 = tileXYToPixelXY( tileX, tileY );
+        PixelPoint pt2 = tileXYToPixelXY( tileX+1, tileY+1 );
+
+        // 左上点
+        GeoPoint geoPt1 = pixelXYToLatLong( pt1.x, pt1.y, zoom );
+        // 右下点
+        GeoPoint geoPt2 = pixelXYToLatLong( pt2.x, pt2.y, zoom );
+
+        GeoRect geoRC = new GeoRect( geoPt1.getLongitude(), geoPt2.getLatitude(), 
+        		geoPt2.getLongitude(), geoPt1.getLatitude() );
+    	return geoRC;
+    }
+
+    /**
+     * 根据两点间经纬度坐标，计算距离（单位 米）
+     * @param lng1
+     * @param lat1
+     * @param lng2
+     * @param lat2
+     * @return 
+     */
+    public static double getDistince( double lng1, double lat1, double lng2, double lat2 )
+    {
+    	double radLat1 = rad(lat1);
+        double radLat2 = rad(lat2);
+        double a = radLat1 - radLat2;
+        double b = rad(lng1) - rad(lng2);
+        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) + 
+         Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+        s = s * earthRadius;
+        s = Math.round(s * 10000) / 10000;
+        return s;
+    }
+    
+
+}

@@ -1,0 +1,71 @@
+package com.palmgo.mvapi.map;
+
+import android.view.View;
+
+/**
+ * @author liujingzhou
+ * 
+ * 该类继承自Overlay，它包含了一个OverlayItems列表。它处理从南到北的排序，用于绘制、创建、平移边界，
+ * 为每个点绘制标记点以及维护一个焦点选中的item，同时，也负责把一个屏幕点击匹配到item上去，分发焦点改变
+ * 事件给备选的监听器。 自定义图层或屏幕图层中要素对象时，调用ItemizedOverlay，若使用默认风格，则调用
+ * PoiOverlay。
+ * 
+ */
+public abstract class ItemizedOverlay<Item extends OverlayItem> extends Overlay
+{
+
+	/**
+	 * 设置画点的方式,如果设置为false,需要在onDraw方法中自定义画POI点
+	 * @param isMViewDraw 是否使用系统缺省方法自动画点
+	 * @return
+	 */
+	public abstract boolean getMViewDraw();
+
+	/**
+	 * 子类通过该方法创建实体item
+	 * @param i 实体item对象
+	 * @return 创建的实体item
+	 */
+	protected abstract Item createItem(int i);
+	
+	/**
+	 * 调整Drawable对象的边界，使(0,0)是这个Drawable对象底部最后一行中心的一个像素。
+	 * 较适合于气泡下面有小针尖的图片。方便起见，返回和输入同样的drawable
+	 * @param balloon 待调整的Drawable对象
+	 * @return 和输入同样的 Drawable对象
+	 */
+	public static android.graphics.drawable.Drawable boundCenterBottom(android.graphics.drawable.Drawable balloon)
+	{
+		return null;
+	}
+	
+	/**
+	 * Overlay中item的数量
+	 * @return Overlay中item的数量
+	 */
+	public abstract int size();
+	
+	/**
+	 * 在每个item上绘制一个标记点。
+	 * @param canvas 待绘制的画布。
+	 * @param mapView 请求绘制的MapView。
+	 * @param shadow 一个布尔值，若为true，绘制阴影层；如果为false，则绘制overlay的内容。
+	 */
+	public void draw(android.graphics.Canvas canvas, MapView mapView, boolean shadow)
+	{
+		super.draw(canvas, mapView, shadow);
+	}
+	
+	
+	
+	/**
+	 * 处理点击事件
+	 * @param position 选择的Item的位置
+	 * @return
+	 */
+	public View onTap(int position)
+	{
+		return null;
+	}
+	
+}

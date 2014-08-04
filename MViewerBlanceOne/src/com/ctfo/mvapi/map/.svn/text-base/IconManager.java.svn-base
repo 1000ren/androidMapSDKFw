@@ -1,0 +1,48 @@
+package com.palmgo.mvapi.map;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+public class IconManager 
+{
+	private String[] icons = {"ico_0132","ico_0134","ico_0430","ico_0130","ico_9997","ico_af00",
+			"ico_9998","ico_0463","ico_5068","ico_7080","ico_9380","ico_4801","ico_0525",
+			"ico_6580","ico_043b","ico_5080","ico_2200","ico_a180","ico_0405","ico_01c7",
+			"ico_4300","ico_1380","ico_7480","ico_2300","ico_8380","ico_8300","ico_0568"};
+	public HashMap<String,Bitmap> mIcoHashMap;
+	public IconManager(Context context)
+	{
+		if(null != icons && icons.length>0)
+		{
+			mIcoHashMap = new HashMap<String,Bitmap>();
+			AssetManager am = context.getResources().getAssets(); 
+			Bitmap bitmap = null;
+			for(String icon : icons)
+			{
+				String path = icon+".png";
+				InputStream oInputStream;
+				try 
+				{
+					oInputStream = am.open(path);
+					bitmap = BitmapFactory.decodeStream(oInputStream);
+					mIcoHashMap.put(icon, bitmap);
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public Bitmap getBitmapByCode(String code)
+	{
+		return mIcoHashMap==null ? null : mIcoHashMap.get(code);
+	}
+}

@@ -1,0 +1,13 @@
+package com.palmgo.mvapi.geocoder;
+
+
+/**
+ * @author liujingzhou
+ * 
+ * 地理编码与逆地理编码类。
+ * 
+ */
+public class Geocoder
+{
+
+}

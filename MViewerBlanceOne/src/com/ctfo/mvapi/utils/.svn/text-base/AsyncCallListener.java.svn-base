@@ -1,0 +1,16 @@
+package com.palmgo.mvapi.utils;
+
+/**
+ * @author liujingzhou
+ * 
+ * 异步调用抽象类
+ * 
+ */
+public abstract class AsyncCallListener
+{
+    public AsyncCallListener()
+    {
+    }
+
+    public abstract void onComplete(int token, String event, Object data);
+}

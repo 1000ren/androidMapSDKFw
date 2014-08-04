@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mapLayout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF">
+
+    <com.ctfo.mvapi.map.MapView
+	    android:id="@+id/mapview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    />
+    <LinearLayout 
+        android:id="@+id/ll1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+        >
+        <EditText 
+		    android:id="@+id/editText"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    />
+        <Button 
+            android:id="@+id/button"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="搜索"
+            />
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/ll2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textColor="@color/color_text_black"
+		    android:text="距左侧"
+            />
+        <EditText 
+		    android:id="@+id/editTextWidth"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    />
+        <TextView 
+            android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textColor="@color/color_text_black"
+		    android:text="距上方"
+            />
+        <EditText 
+		    android:id="@+id/editTextHeight"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    />
+        <Button 
+            android:id="@+id/buttonCompass"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="确定"
+            />
+    </LinearLayout>
+	
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="100dip"
+        >
+        <com.ctfo.mvapi.utils.CPImageButton            android:id="@+id/map_btn_zoomin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dip"
+            />
+        <com.ctfo.mvapi.utils.CPImageButton            android:id="@+id/map_btn_zoomout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/map_btn_zoomin"
+            android:layout_below="@id/map_btn_zoomin"
+            />
+        <ImageView 
+            android:id="@+id/mylocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/direct_disenable"
+            android:layout_alignBottom="@id/map_btn_zoomout"
+            android:paddingLeft="10dip"
+            />
+    </RelativeLayout>
+    
+</RelativeLayout>
+

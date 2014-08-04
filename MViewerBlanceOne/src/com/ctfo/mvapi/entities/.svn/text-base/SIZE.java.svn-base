@@ -1,0 +1,87 @@
+package com.palmgo.mvapi.entities;
+
+/**
+ * @author liujingzhou
+ * 
+ * SIZE
+ *
+ */
+public class SIZE
+{
+	public SIZE()
+	{
+		cx = 0;
+		cy = 0;
+	}
+
+	/**
+	 * 构造函数
+	 * 
+	 * @param X
+	 *            长
+	 * @param Y
+	 *            宽
+	 * @return
+	 */
+	public SIZE(int X, int Y)
+	{
+		cx = X;
+		cy = Y;
+	}
+
+	public SIZE(SIZE size)
+	{
+		cx = size.cx;
+		cy = size.cy;
+	}
+
+	/**
+	 * 设置X坐标
+	 * 
+	 * @param X
+	 *            长
+	 * @return
+	 */
+	public void setX(int X)
+	{
+		cx = X;
+	}
+
+	/**
+	 * 设置Y坐标
+	 * 
+	 * @param Y
+	 *            宽
+	 * @return
+	 */
+	public void setY(int Y)
+	{
+		cy = Y;
+	}
+
+	/**
+	 * 获取X坐标
+	 * 
+	 * @return cx
+	 */
+	public final int getX()
+	{
+		return cx;
+	}
+
+	/**
+	 * 获取Y坐标
+	 * 
+	 * @return cy
+	 */
+	public final int getY()
+	{
+		return cy;
+	}
+
+	// X坐标
+	private int cx = 0;
+
+	// Y坐标
+	private int cy = 0;
+}

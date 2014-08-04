@@ -1,0 +1,318 @@
+package com.palmgo.mvapi.map;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.palmgo.mvapi.MVApi;
+import com.palmgo.mvapi.NativeMVAPI;
+import com.palmgo.mvapi.entities.BlockRect;
+import com.palmgo.mvapi.entities.GeoPoint;
+import com.palmgo.mvapi.entities.GeoRect;
+import com.palmgo.mvapi.entities.GeoTilePoint;
+import com.palmgo.mvapi.entities.GridRect;
+import com.palmgo.mvapi.entities.PixelPoint;
+import com.palmgo.mvapi.utils.MVApiLog;
+
+
+/**
+ * @author liujingzhou
+ * 
+ * 地图数据管理类
+ * 
+ */
+public class MapManager
+{
+	// 全图有效范围
+	private GeoRect mAllGeoRect = null;
+	// 比例尺与MLevel之间的对应
+	private HashMap<Integer, String> mScale2MLevelHashMap = null;
+	// MLevel与其索引编号的对应
+	private HashMap<String, Integer> mMLevel2IdxHashMap = null;
+	// MapMode
+	private int mMapMode = 0;
+	// block下载池
+	private BlockDownloadPool mBlockDownloadPool = null;
+	// 当前需要下载的block信息
+	private List<BlockRect> mBlockRectList = null;
+	private HashMap<String, String> mBlockRectHashMap = null;
+
+	// 绘制时的返回值
+	public static final int DRAWTILE_SUCCESS = 0;
+	public static final int DRAWTILE_FAIL = 1;
+	public static final int DRAWTILE_AGAIN = 5;
+
+
+	public MapManager()
+	{
+		mAllGeoRect = new GeoRect();
+		mAllGeoRect.minLongitude = MapDef.LEFTLON;
+		mAllGeoRect.minLatitude = MapDef.DOWNLAT;
+		mAllGeoRect.maxLongitude = MapDef.RIGHTLON;
+		mAllGeoRect.maxLatitude = MapDef.UPLAT;
+	}
+
+	public boolean init( int mapMode )
+	{
+		mMapMode = mapMode;
+
+		mScale2MLevelHashMap = new HashMap<Integer, String>();
+		mScale2MLevelHashMap.put(1, "q");
+		mScale2MLevelHashMap.put(2, "q");
+		mScale2MLevelHashMap.put(3, "p");
+		mScale2MLevelHashMap.put(4, "p");
+		mScale2MLevelHashMap.put(5, "o");
+		mScale2MLevelHashMap.put(6, "o");
+		mScale2MLevelHashMap.put(7, "n");
+		mScale2MLevelHashMap.put(8, "n");
+		mScale2MLevelHashMap.put(9, "m");
+		mScale2MLevelHashMap.put(10, "m");
+		mScale2MLevelHashMap.put(11, "l");
+		mScale2MLevelHashMap.put(12, "l");
+		mScale2MLevelHashMap.put(13, "k");
+		mScale2MLevelHashMap.put(14, "k");
+		mScale2MLevelHashMap.put(15, "j");
+		mScale2MLevelHashMap.put(16, "j");
+		mScale2MLevelHashMap.put(17, "i");
+		mScale2MLevelHashMap.put(18, "i");
+		mScale2MLevelHashMap.put(19, "i");
+		mScale2MLevelHashMap.put(20, "i");
+
+		mMLevel2IdxHashMap = new HashMap<String, Integer>();
+		mMLevel2IdxHashMap.put("g", 0);
+		mMLevel2IdxHashMap.put("i", 1);
+		mMLevel2IdxHashMap.put("j", 2);
+		mMLevel2IdxHashMap.put("k", 3);
+		mMLevel2IdxHashMap.put("l", 4);
+		mMLevel2IdxHashMap.put("m", 5);
+		mMLevel2IdxHashMap.put("n", 6);
+		mMLevel2IdxHashMap.put("o", 7);
+		mMLevel2IdxHashMap.put("p", 8);
+		mMLevel2IdxHashMap.put("q", 9);
+
+		mBlockRectList = new ArrayList<BlockRect>();
+		mBlockRectHashMap = new HashMap<String, String>();
+		
+		// 下载线程池
+		mBlockDownloadPool = new BlockDownloadPool();
+		mBlockDownloadPool.start();
+
+		return true;
+	}
+
+	public List<GridRect> getGridRect( GeoRect georc, int scale )
+	{
+		georc = filterRect(georc);
+		if ( georc == null )
+		{
+			return null;
+		}
+		List<GridRect> list = new ArrayList<GridRect>();
+
+		// 左上角
+		PixelPoint pxlptLT;
+		pxlptLT = MapTile.latLongToPixelXY( georc.maxLatitude, georc.minLongitude, scale );
+		// 右下角
+		PixelPoint pxlptRB;
+		pxlptRB = MapTile.latLongToPixelXY( georc.minLatitude, georc.maxLongitude, scale );
+
+	    int nMinCol = 0;
+	    int nMaxCol = 0;
+	    int nMinRow = 0;
+	    int nMaxRow = 0;
+	    boolean bx = false;
+	    boolean by = false;
+	    GeoTilePoint tilePt1;
+	    tilePt1 = MapTile.pixelXYToTileXY( pxlptLT.x, pxlptLT.y );
+	    nMinCol = tilePt1.x;
+	    nMinRow = tilePt1.y;
+	    GeoTilePoint tilePt2;
+	    tilePt2 = MapTile.pixelXYToTileXY( pxlptRB.x, pxlptRB.y );
+	    nMaxCol = tilePt2.x;
+	    nMaxRow = tilePt2.y;
+	    bx = ( pxlptRB.x % MapDef.tileW == 0 ) ? true : false;
+	    by = ( pxlptRB.y % MapDef.tileH == 0 ) ? true : false;
+	    if ( bx )
+	    {
+	        nMaxCol -= 1;
+	    }
+	    if ( by )
+	    {
+	        nMaxRow -= 1;
+	    }
+
+	    // 左上 --> 右下
+	    // 列
+	    for ( int ix=nMinCol; ix<=nMaxCol; ix++ )
+	    {
+	        // 行
+	        for ( int iy=nMinRow; iy<=nMaxRow; iy++ )
+	        {
+	        	GridRect gridrect = new GridRect();
+
+	        	gridrect.mGeoRect = MapTile.tileXYToLLBound( ix, iy, scale );
+	        	gridrect.mScale = scale;
+	        	gridrect.mTileX = ix;
+	        	gridrect.mTileY = iy;
+
+	        	gridrect.mGeoPoint[0] = new GeoPoint();
+	        	gridrect.mGeoPoint[0].setLongitude( gridrect.mGeoRect.minLongitude );
+	        	gridrect.mGeoPoint[0].setLatitude( gridrect.mGeoRect.minLatitude );
+
+	        	gridrect.mGeoPoint[1] = new GeoPoint();
+	        	gridrect.mGeoPoint[1].setLongitude( gridrect.mGeoRect.maxLongitude );
+	        	gridrect.mGeoPoint[1].setLatitude( gridrect.mGeoRect.minLatitude );
+
+	        	gridrect.mGeoPoint[2] = new GeoPoint();
+	        	gridrect.mGeoPoint[2].setLongitude( gridrect.mGeoRect.maxLongitude );
+	        	gridrect.mGeoPoint[2].setLatitude( gridrect.mGeoRect.maxLatitude );
+
+	        	gridrect.mGeoPoint[3] = new GeoPoint();
+	        	gridrect.mGeoPoint[3].setLongitude( gridrect.mGeoRect.minLongitude );
+	        	gridrect.mGeoPoint[3].setLatitude( gridrect.mGeoRect.maxLatitude );
+
+	        	gridrect.mGeoPoint[4] = new GeoPoint();
+	        	gridrect.mGeoPoint[4] = gridrect.mGeoPoint[0];
+
+	        	list.add( gridrect );
+	        }
+	    }
+		return list;
+	}
+
+	public void updateBlockList( List<GridRect> grclist )
+	{
+		mBlockRectList.clear();
+		mBlockRectHashMap.clear();
+		for (int i = 0; i < grclist.size(); i++)
+		{
+			GridRect grc = grclist.get(i);
+			if ( grc == null )
+			{
+				continue;
+			}
+			// o p q 三层直接使用本地数据
+			String strLevel = mScale2MLevelHashMap.get(grc.mScale);
+			if ( strLevel.compareToIgnoreCase("o") == 0 || 
+					strLevel.compareToIgnoreCase("p") == 0 || 
+					strLevel.compareToIgnoreCase("q") == 0 )
+			{
+				continue;
+			}
+			List<BlockRect> blocklist = getBlockRect(grc);
+			for ( BlockRect blockRect : blocklist )
+			{
+				String mmFile = MVApi.mVectorPath + MCMDNCoordTrans.getMCMDNBlockFilePath(blockRect.mLevel, blockRect.mMeshXY, blockRect.mBlockXY);
+				if ( MVApi.checkFileExist(mmFile) )
+				{
+					continue;
+				}
+				String strId = blockRect.mLevel + "_" + blockRect.mBlockXY[0] + "_" + blockRect.mBlockXY[1];
+				if ( mBlockRectHashMap.containsKey( strId ) )
+				{
+					continue;
+				}
+	        	mBlockRectList.add( blockRect );
+	        	mBlockRectHashMap.put( strId, strId );
+			}
+		}
+		mBlockDownloadPool.updateBlockList( mBlockRectList);
+	}
+
+	public int loadDataForDisplay( final GridRect grc )
+	{
+		double dLon = (grc.mGeoRect.maxLongitude+grc.mGeoRect.minLongitude)/2;
+		double dLat = (grc.mGeoRect.maxLatitude+grc.mGeoRect.minLatitude)/2;
+
+		if ( mMapMode == MapMode.VECTOR_MODE )
+		{
+			String strLevel = mScale2MLevelHashMap.get(grc.mScale);
+			if ( strLevel.compareToIgnoreCase("o") != 0 && 
+					strLevel.compareToIgnoreCase("p") != 0 && 
+					strLevel.compareToIgnoreCase("q") != 0 )
+			{
+				List<BlockRect> blocklist = getBlockRect(grc);
+				for ( BlockRect blockRect : blocklist )
+				{
+					String mmFile = MVApi.mVectorPath + MCMDNCoordTrans.getMCMDNBlockFilePath(blockRect.mLevel, blockRect.mMeshXY, blockRect.mBlockXY);
+					if ( !MVApi.checkFileExist(mmFile) )
+					{
+						return MapManager.DRAWTILE_AGAIN;
+					}
+				}
+			}
+			NativeMVAPI.nativeDrawTileMap(MCMDNCoordTrans.trans2Second24(dLon), MCMDNCoordTrans.trans2Second24(dLat), grc.mScale);
+		}
+		else if ( mMapMode == MapMode.GRID_MODE )
+		{
+			// 暂时不处理
+		}
+		else if ( mMapMode == MapMode.LOCAL_MODE )
+		{
+			// 数据存储在本地，直接调用
+			NativeMVAPI.nativeDrawTileMap(MCMDNCoordTrans.trans2Second24(dLon), MCMDNCoordTrans.trans2Second24(dLat), grc.mScale);
+		}
+		return MapManager.DRAWTILE_SUCCESS;
+	}
+
+	private GeoRect filterRect( GeoRect georc )
+	{
+		// 范围判定
+		if ( !mAllGeoRect.IsIntersected( georc ) )
+		{
+			MVApiLog.e( "MapManager", "map georect is out of bound !" );
+			return null;
+		}
+		else
+		{
+			if ( georc.minLongitude < mAllGeoRect.minLongitude )
+	        {
+				georc.minLongitude = mAllGeoRect.minLongitude;
+	        }
+	        if ( georc.minLatitude < mAllGeoRect.minLatitude )
+	        {
+	        	georc.minLatitude = mAllGeoRect.minLatitude;
+	        }
+	        if ( georc.maxLongitude > mAllGeoRect.maxLongitude )
+	        {
+	        	georc.maxLongitude = mAllGeoRect.maxLongitude;
+	        }
+	        if ( georc.maxLatitude > mAllGeoRect.maxLatitude )
+	        {
+	        	georc.maxLatitude = mAllGeoRect.maxLatitude;
+	        }
+		}
+		return georc;
+	}
+
+	private List<BlockRect> getBlockRect( final GridRect grc )
+	{
+		String strLevel = mScale2MLevelHashMap.get(grc.mScale);
+		int levelIdx = mMLevel2IdxHashMap.get(strLevel);
+
+		List<BlockRect> blocklist = new ArrayList<BlockRect>();
+
+		int[] minBlockXY = MCMDNCoordTrans.getBlockXYOfLL( levelIdx, MCMDNCoordTrans.trans2Second1000(grc.mGeoRect.minLongitude), 
+				MCMDNCoordTrans.trans2Second1000(grc.mGeoRect.minLatitude) );
+		int[] maxBlockXY = MCMDNCoordTrans.getBlockXYOfLL( levelIdx, MCMDNCoordTrans.trans2Second1000(grc.mGeoRect.maxLongitude), 
+				MCMDNCoordTrans.trans2Second1000(grc.mGeoRect.maxLatitude) );
+		for ( int ix=minBlockXY[0]; ix<=maxBlockXY[0]; ix++ )
+	    {
+	        for ( int iy=minBlockXY[1]; iy<=maxBlockXY[1]; iy++ )
+	        {
+	        	BlockRect blockRect = new BlockRect();
+	        	blockRect.mLevel = strLevel;
+	        	blockRect.mBlockXY[0] = ix;
+	        	blockRect.mBlockXY[1] = iy;
+	        	GeoRect geoRect = MCMDNCoordTrans.getLLRectOfBlock( levelIdx, ix, iy );
+	        	int centerx = MCMDNCoordTrans.trans2Second1000( (geoRect.minLongitude+geoRect.maxLongitude)/2 );
+	        	int centery = MCMDNCoordTrans.trans2Second1000( (geoRect.minLatitude+geoRect.maxLatitude)/2 );
+	        	blockRect.mMeshXY = MCMDNCoordTrans.getMeshXYOfLL( levelIdx, centerx, centery );
+	        	blocklist.add( blockRect );
+	        }
+	    }
+		return blocklist;
+	}
+	
+
+}

@@ -1,0 +1,31 @@
+package com.ctfo.mvapi.entities;
+
+import android.graphics.Rect;
+
+/**
+ * @author fangwei
+ * 
+ * 标准格网对象
+ */
+public class GridRect
+{
+	public GeoRect	mGeoRect;
+	public GeoPoint	mGeoPoint[];
+	public int 		mScale;
+	public int 		mTileX;
+	public int 		mTileY;
+	public POINT    mSrcPoint[];
+	public Rect		mSrcRect;
+
+	public GridRect()
+	{
+		mGeoRect = new GeoRect();
+		mGeoPoint = new GeoPoint[5];
+		mScale = -1;
+		mTileX = -1;
+		mTileY = -1;
+		mSrcPoint = new POINT[5];
+		mSrcRect = new Rect();
+	}
+
+}

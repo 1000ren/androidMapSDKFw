@@ -1,0 +1,77 @@
+package com.ctfo.mvapi.database;
+
+import java.util.Hashtable;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+
+public class AnnotationData implements SaveDataListener 
+{
+	public final String CODE = "code";
+	public final String ANNOTATION = "annotation";
+	
+	public String mCode;//网格编码
+	public String mAnntoation;//被Json.toString的实体类
+	
+	public Context mContext;
+	
+	public AnnotationData(Context context)
+	{
+		mContext = context;
+	}
+	
+	@Override
+	public Hashtable<String, String> onCreateTable() 
+	{
+		Hashtable<String,String> ohKey = new Hashtable<String,String>();
+		ohKey.put(CODE, SaveManager.TYPE_TEXT);
+		ohKey.put(ANNOTATION, SaveManager.TYPE_TEXT);
+		return ohKey;
+	}
+
+	@Override
+	public String onFilterData() 
+	{
+		String sql =  CODE + " = '" + mCode +"'";
+		return sql;
+	}
+
+	@Override
+	public ContentValues onSaveData() throws Exception 
+	{
+		ContentValues oValues = new ContentValues();
+		oValues.put(CODE, mCode);
+		oValues.put(ANNOTATION, mAnntoation);
+		return oValues;
+	}
+
+	@Override
+	public void onReadData(Cursor oCursor) throws Exception 
+	{
+		if (oCursor.getColumnIndex(CODE) != -1) 
+		{
+			mCode= oCursor.getString(oCursor.getColumnIndex(CODE));
+			mCode = mCode==null ? null :mCode.trim();
+		}
+		if (oCursor.getColumnIndex(ANNOTATION) != -1) 
+		{
+			mAnntoation = oCursor.getString(oCursor.getColumnIndex(ANNOTATION));
+			mAnntoation = mAnntoation==null ? null :mAnntoation.trim();
+		}
+	}
+
+	@Override
+	public void clearData() 
+	{
+		mCode = "";
+		mAnntoation = "";
+	}
+
+	@Override
+	public Context getContext() 
+	{
+		return mContext;
+	}
+
+}

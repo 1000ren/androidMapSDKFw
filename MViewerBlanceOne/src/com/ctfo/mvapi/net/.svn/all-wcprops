@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 220
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net
+END
+INetStateListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/INetStateListener.java
+END
+ControlRunnable.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/ControlRunnable.java
+END
+MySSLSocketFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/MySSLSocketFactory.java
+END
+IErrorListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/IErrorListener.java
+END
+ErrorResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/ErrorResponse.java
+END
+CodeUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 234
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/CodeUtil.java
+END
+CustomMultiPartEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/CustomMultiPartEntity.java
+END
+IResponseListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/IResponseListener.java
+END
+BaseJSONRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/BaseJSONRequest.java
+END
+BaseJSONRsponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/BaseJSONRsponse.java
+END
+APN.java
+K 25
+svn:wc:ra_dav:version-url
+V 229
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/APN.java
+END
+URLParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 235
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/URLParser.java
+END
+RsqHandleHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/RsqHandleHelper.java
+END
+ClientSession.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/ClientSession.java
+END
+BaseHttpRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/BaseHttpRequest.java
+END
+INetConnectionListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 248
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/INetConnectionListener.java
+END
+BaseResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 238
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/BaseResponse.java
+END
+BaseHttpResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/net/BaseHttpResponse.java
+END

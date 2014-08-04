@@ -1,0 +1,71 @@
+package com.palmgo.mvapi.entities;
+
+import java.io.Serializable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
+
+public class RoadNameItem implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+
+	// id
+	public int id = 0;
+	// name
+	public String name = new String("");
+	// 经度
+	public double longitude = 0.0;
+	// 纬度
+	public double latitude = 0.0;
+
+	public RoadNameItem( int id, String name, double lon, double lat )
+	{
+		this.id = id;
+		this.name = name;
+		this.longitude = lon;
+		this.latitude = lat;
+	}
+	
+	public RoadNameItem()
+	{
+	}
+	
+	public JSONObject packageJson() 
+	{
+		JSONObject jo = new JSONObject();
+		try 
+		{
+			jo.put("id", id);
+			jo.put("name", name==null?"":name);
+			jo.put("longitude", longitude);
+			jo.put("latitude", latitude);
+		} 
+		catch(JSONException e)
+    	{
+    		Log.d("packageJson-2",e.getMessage());
+    	}
+		return jo;
+	}
+	
+	public RoadNameItem setJSONObjectToObject(JSONObject jsonObj)
+	{
+		RoadNameItem oItem = new RoadNameItem();
+		try
+		{
+			oItem.id =  jsonObj.getInt("id");
+			if ( !jsonObj.isNull("name") )
+			{
+				oItem.name =  jsonObj.getString("name");
+			}
+			oItem.longitude = jsonObj.getDouble("longitude");
+			oItem.latitude = jsonObj.getDouble("latitude");
+		}
+		catch(JSONException e)
+		{
+			Log.d("setJSONObjectToObject-2",e.getMessage());
+		}
+		return oItem;
+	}
+}

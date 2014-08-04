@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayoutPopup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/mul_poi_popup_bg"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center"
+    android:padding="0dip"
+    android:orientation="horizontal" >
+
+
+
+    <ImageButton
+        android:id="@+id/ImageButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:contentDescription="@null"
+        android:focusable="true"
+        android:src="@drawable/pop_btn_nearsearch" />
+    
+    <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/black_line"
+         android:layout_gravity="top"
+         android:contentDescription="@null" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutPoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="3.0dip"
+        android:layout_marginRight="3.0dip"
+        android:orientation="vertical"
+        android:layout_marginTop="7.0sp"
+        android:paddingLeft="7.0sp"
+        android:paddingRight="7.0sp" >
+
+        <TextView
+            android:id="@+id/PoiName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="150dip"
+            android:singleLine="true"
+            android:text="北京北京北京北京"
+            android:textColor="#ff000000"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/PoiAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="150dip"
+            android:singleLine="true"
+            android:text="北京北京北京北京"
+            android:textColor="#ff464646"
+            android:textSize="12.0sp" />
+    </LinearLayout>
+    
+	<ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/black_line"
+          android:layout_gravity="top"
+          android:contentDescription="@null" />
+
+    <ImageButton
+        android:id="@+id/ImageButtonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:contentDescription="@null"
+        android:focusable="true"
+        android:src="@drawable/pop_btn_route" />
+
+</LinearLayout>

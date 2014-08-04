@@ -1,0 +1,19 @@
+package com.palmgo.mvapi.location;
+
+import com.palmgo.mvapi.map.MapView;
+
+import android.graphics.Canvas;
+
+
+/**
+ * @author liujingzhou
+ * 
+ * 定位管理类
+ * 
+ */
+public class LocationManager
+{
+	public void draw(Canvas canvas, MapView mapView)
+	{
+	}
+}

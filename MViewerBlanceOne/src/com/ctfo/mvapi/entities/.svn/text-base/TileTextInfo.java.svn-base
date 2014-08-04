@@ -1,0 +1,116 @@
+package com.palmgo.mvapi.entities;
+
+import java.io.Serializable;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+import android.util.Log;
+
+
+public class TileTextInfo implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+
+	// Tile信息
+	public GeoTilePoint mTile;
+	// 路名信息
+	public RoadNameItem[] mRoadNameItems;
+	// 注记信息
+	public AnnotationItem[] mAnnotationItems;
+
+	public TileTextInfo( GeoTilePoint tile, RoadNameItem[] roadNameItems, AnnotationItem[] annoItems )
+	{
+		this.mTile = tile;
+		this.mRoadNameItems = roadNameItems;
+		this.mAnnotationItems = annoItems;
+	}
+	
+	public TileTextInfo()
+	{
+	}
+	
+	public JSONObject packageJson() 
+	{
+		JSONObject jo = new JSONObject();
+		try 
+		{
+			jo.put("mTile", mTile.packageJson().toString());
+
+			if (null != mRoadNameItems && mRoadNameItems.length>0) 
+			{
+				JSONArray jsonArray = new JSONArray();
+				for (RoadNameItem oItem : mRoadNameItems) 
+				{
+					jsonArray.put(oItem.packageJson());
+				}
+				jo.put("mRoadNameItems", jsonArray);
+			}
+			else
+			{
+				jo.put("mRoadNameItems", new JSONArray());
+			}
+
+			if (null != mAnnotationItems && mAnnotationItems.length>0) 
+			{
+				JSONArray jsonArray = new JSONArray();
+				for (AnnotationItem oItem : mAnnotationItems) 
+				{
+					jsonArray.put(oItem.packageJson());
+				}
+				jo.put("mAnnotationItems", jsonArray);
+			}
+			else
+			{
+				jo.put("mAnnotationItems", new JSONArray());
+			}
+		} 
+		catch(JSONException e)
+    	{
+    		Log.d("packageJson error",e.getMessage());
+    	}
+		return jo;
+	}
+	
+	public void setJSONObjectToObject(JSONObject jsonObj)
+	{
+		this.mTile = new GeoTilePoint();
+		try
+		{
+			String titleStr = jsonObj.getString("mTile");
+			JSONObject object = new JSONObject(titleStr);
+			this.mTile.setJSONObjectToObject(object);
+			
+			JSONArray strRoadNameJsonArray = jsonObj.getJSONArray("mRoadNameItems");
+			if ( strRoadNameJsonArray != null && strRoadNameJsonArray.length()>0 )
+			{
+				this.mRoadNameItems = new RoadNameItem[strRoadNameJsonArray.length()];
+				for (int j = 0; j < strRoadNameJsonArray.length(); j++)
+				{
+					JSONObject jo = strRoadNameJsonArray.getJSONObject(j);
+					RoadNameItem oItem = new RoadNameItem();
+					this.mRoadNameItems[j] = oItem.setJSONObjectToObject(jo);
+				}
+			}
+			
+			JSONArray strAnnoJsonArray = jsonObj.getJSONArray("mAnnotationItems");
+			if(strAnnoJsonArray != null && strAnnoJsonArray.length()>0)
+			{
+				this.mAnnotationItems = new AnnotationItem[strAnnoJsonArray.length()];
+				for(int j=0;j<strAnnoJsonArray.length();j++)
+				{
+					JSONObject jo = strAnnoJsonArray.getJSONObject(j);
+					AnnotationItem oAnnotationItem = new AnnotationItem();
+					this.mAnnotationItems[j] = oAnnotationItem.setJSONObjectToObject(jo);
+				}
+			}
+		}
+		catch(JSONException e)
+		{
+			Log.d("setJSONObjectToObject error",e.getMessage());
+		}
+	}
+
+}

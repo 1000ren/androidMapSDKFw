@@ -1,0 +1,12 @@
+package com.palmgo.mvapi.map;
+
+/**
+ * @author liujingzhou
+ * 
+ * 地图截图类。
+ * 
+ */
+public class MapSnapshot
+{
+
+}

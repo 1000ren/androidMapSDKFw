@@ -1,0 +1,39 @@
+package com.palmgo.mvapi.protocol.map;
+
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+
+import com.palmgo.mvapi.MVApi;
+import com.palmgo.mvapi.map.BlockDownloadPool.BlockDownloadTask;
+import com.palmgo.mvapi.net.BaseHttpRequest;
+import com.palmgo.mvapi.net.BaseHttpResponse;
+import com.palmgo.mvapi.utils.MVApiLog;
+
+public class GetVectorDataRequest extends BaseHttpRequest 
+{
+	public GetVectorDataRequest( BlockDownloadTask task )
+	{
+		setMethod(GET);
+		String urlString;
+		urlString = MVApi.getServerUrlSetting().strVectorMapUrl + 
+				com.palmgo.mvapi.protocol.ProtocolDef.METHOD_GETMCMDN + 
+				"block=" + task.block.mLevel + 
+				task.block.mBlockXY[0] + "." + 
+				task.block.mBlockXY[1];
+		MVApiLog.e( "GetVectorDataRequest", urlString );
+		setAbsoluteURI( urlString );
+	}
+
+	@Override
+	public BaseHttpResponse createResponse()
+	{
+		return new GetVectorDataResponse();
+	}
+
+	@Override
+	public List<NameValuePair> getPostParams() 
+	{
+		return null;
+	}
+}

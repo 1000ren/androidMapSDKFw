@@ -1,0 +1,13 @@
+package com.palmgo.mvapi.map;
+
+/**
+ * @author liujingzhou
+ * 
+ * 地图配置管理类。
+ * 
+ */
+public class MapStyleConfig
+{
+
+}
+

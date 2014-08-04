@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 225
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities
+END
+GeoTilePoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2052/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/GeoTilePoint.java
+END
+GridRect.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/GridRect.java
+END
+RoadNameItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2520/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/RoadNameItem.java
+END
+PoiItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 238
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2039/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/PoiItem.java
+END
+TileMapInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/TileMapInfo.java
+END
+BlockRect.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/BlockRect.java
+END
+BNPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 238
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2227/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/BNPoint.java
+END
+SIZE.java
+K 25
+svn:wc:ra_dav:version-url
+V 235
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2013/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/SIZE.java
+END
+TileTextInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2520/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/TileTextInfo.java
+END
+GeoPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2013/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/GeoPoint.java
+END
+ServerUrlSetting.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2039/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/ServerUrlSetting.java
+END
+GeoRect.java
+K 25
+svn:wc:ra_dav:version-url
+V 238
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2013/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/GeoRect.java
+END
+AnnotationItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 245
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2520/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/AnnotationItem.java
+END
+POINT.java
+K 25
+svn:wc:ra_dav:version-url
+V 236
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2013/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/POINT.java
+END
+PixelPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2013/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/PixelPoint.java
+END
+RECT.java
+K 25
+svn:wc:ra_dav:version-url
+V 235
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2013/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/entities/RECT.java
+END

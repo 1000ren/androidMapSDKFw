@@ -1,0 +1,182 @@
+package com.ctfo.mvapi.utils;
+
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.os.Debug;
+import android.text.TextUtils;
+
+/**
+ * @author fangwei
+ * 
+ * 工具封装类。
+ * 
+ */
+public class Util
+{
+
+    static final float INT_1024  = 1024.00F;
+
+
+    /**
+     * mailbox = name-addr name-addr = [display-name] angle-addr angle-addr =
+     * [CFWS] "<" addr-spec ">" [CFWS]
+     */
+    public static final Pattern NAME_ADDR_EMAIL_PATTERN = Pattern.compile(
+            "\\s*(\"[^\"]*\"|[^<>\"]+)\\s*<([^<>]+)>\\s*");
+
+    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-]{1,256}" + "\\@" +
+            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." +
+            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+");
+
+    public static final Pattern PHONE_PATTERN = Pattern.compile(
+            "(\\+[0-9]+[\\- \\.]*)?" // +<digits><sdd>*
+            + "(\\([0-9]+\\)[\\- \\.]*)?" // (<digits>)<sdd>*
+            + "([0-9][0-9\\- \\.][0-9\\- \\.]+[0-9])"); // <digit><digit|sdd>+<digit>
+
+    /**
+     * @return boolean
+     */
+    public static boolean getSystemFreedSizeMib() {
+        if (Math.round(Debug.getGlobalFreedSize() / INT_1024) > ConstVariable.INT_15) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * 创建不带任何按钮的提示框
+     * 
+     * @param title
+     *            title
+     * @param content
+     *            content
+     * @param context
+     *            context
+     * @return dlg
+     */
+    public static Builder createHintDialog(final String title,
+            final String content, Context context) {
+        Builder dlg = new AlertDialog.Builder(context);
+        dlg.setTitle(title);
+        dlg.setMessage(content);
+
+        return dlg;
+    }
+
+    /**
+     * @return 当前系统秒值
+     */
+    public static int getSeconds()
+    {
+        return (int) (System.currentTimeMillis() / ConstVariable.INT_1000);
+    }
+
+
+    /**
+     * Returns true if the address is an email address
+     * 
+     * @param address
+     *            the input address to be tested
+     * @return true if address is an email address
+     */
+    public static boolean isEmailAddress(String address)
+    {
+        if (TextUtils.isEmpty(address)) {
+            return false;
+        }
+
+        String s = extractAddrSpec(address);
+        Matcher match = EMAIL_ADDRESS_PATTERN.matcher(s);
+
+        return match.matches();
+    }
+
+    /**
+     * Returns true if the address is an email address
+     * 
+     * @param address
+     *            the input address to be tested
+     * @return true if address is an email address
+     */
+    public static String extractAddrSpec(String address)
+    {
+        java.util.regex.Matcher match = NAME_ADDR_EMAIL_PATTERN
+                .matcher(address);
+
+        if (match.matches()) {
+            return match.group(2);
+        }
+
+        return address;
+    }
+
+    /**
+     * Returns true if the number is a Phone number
+     * 
+     * @param number
+     *            the input number to be tested
+     * @return true if number is a Phone number
+     */
+    public static boolean isPhoneNumber(String number)
+    {
+        if (TextUtils.isEmpty(number)) {
+            return false;
+        }
+
+        Matcher match = PHONE_PATTERN.matcher(number);
+
+        return match.matches();
+    }
+
+    /**
+     * 查看SD卡是否存在
+     * 
+     * @return key
+     */
+    public static boolean isSDCardExist()
+    {
+        return android.os.Environment.getExternalStorageState()
+                .equals(android.os.Environment.MEDIA_MOUNTED);
+    }
+
+    /**
+     * DIP转PX
+     * 
+     * @param dip
+     * @return dip
+     */
+    public static int dipToPixcel(int dip)
+    {
+        return (int) (dip * PrefCache.density); // warnning:ubuntu上编译时打开
+        // return dip; // eclipse下编译打开
+    }
+    
+    /**
+     * 删除当前目录下所有文件
+     * @param file
+     */
+    public static void deleteAllFile( File file )
+	{
+		if ( file.isFile() || null == file.list() || file.list().length == 0 )
+		{
+			file.delete();
+		}
+		else
+		{
+			File[] files = file.listFiles();
+			for ( File f : files )
+			{
+				deleteAllFile( f );
+				f.delete();
+			}
+		}
+	}
+}

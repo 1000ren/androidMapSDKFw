@@ -1,0 +1,370 @@
+package com.palmgo.mvapi.map;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.palmgo.mvapi.MVApi;
+import com.palmgo.mvapi.entities.BlockRect;
+import com.palmgo.mvapi.protocol.ProtocolDef;
+
+
+/**
+ * @author liujingzhou
+ *
+ * Block文件的下载任务管理池
+ */
+public class BlockDownloadPool extends Thread
+{
+	public static BlockDownloadPool mthis = null;
+	// 需要下载的block
+	private List<BlockRect> mBlockList = new ArrayList<BlockRect>();
+	// 最大线程数
+	private static final int THREAD_MAX = 3;
+	// 下载线程
+	private BlockDownloadThread[] mBlockDownloadThread = new BlockDownloadThread[THREAD_MAX];
+	// 最大等待任务数
+	//private static final int TASK_WAIT_MAX = 100;
+	// 当前等待下载的任务
+	private LinkedList<BlockDownloadTask> mTaskLinkedList = new LinkedList<BlockDownloadTask>();
+	// 当前正在下载的任务
+	private HashMap<String, BlockDownloadTask> mTaskDownloadingHashMap = new HashMap<String, BlockDownloadTask>();
+	// 最近完成的任务数
+	private static final int TASK_FINISH_MAX = 50;
+	// 最近完成的任务
+	private LinkedList<String> mFinishTaskList = new LinkedList<String>();
+	
+
+
+	public BlockDownloadPool()
+	{
+		mthis = this;
+	}
+
+	public void updateBlockList( List<BlockRect> blocklist )
+	{
+		synchronized ( mBlockList )
+		{
+			mBlockList.clear();
+			mBlockList.addAll(blocklist);
+			// 更新下载任务
+			updateTask();
+		}
+	}
+
+	private void updateTask()
+	{
+		synchronized ( mBlockList )
+		{
+			synchronized ( mTaskLinkedList )
+			{
+				mTaskLinkedList.clear();
+			}
+			for (int i = 0; i < mBlockList.size(); i++)
+			{
+				BlockRect blockRect = mBlockList.get(i);
+				if ( blockRect == null )
+				{
+					continue;
+				}
+				BlockDownloadTask task = new BlockDownloadTask( blockRect );
+				synchronized ( mTaskDownloadingHashMap )
+				{
+					if ( mTaskDownloadingHashMap.containsKey( task.id ) )
+					{
+						continue;
+					}
+				}
+				synchronized ( mFinishTaskList )
+				{
+					if ( mFinishTaskList.contains( task.id ) )
+					{
+						continue;
+					}
+				}
+				synchronized ( mTaskLinkedList )
+				{
+					mTaskLinkedList.addLast(task);
+					/*while ( mTaskLinkedList.size() > TASK_WAIT_MAX )
+					{
+						mTaskLinkedList.pollLast();
+					}*/
+				}
+			}
+			mBlockList.clear();
+		}
+	}
+
+	public BlockDownloadTask getTask()
+	{
+		synchronized ( mTaskLinkedList )
+		{
+			return mTaskLinkedList.poll();
+		}
+	}
+	
+	public synchronized void finishTask( int id, BlockDownloadTask task )
+	{
+		synchronized ( mFinishTaskList )
+		{
+			mFinishTaskList.addFirst( task.id );
+			while ( mFinishTaskList.size() > TASK_FINISH_MAX )
+			{
+				mFinishTaskList.removeLast();
+			}
+		}
+		synchronized ( mTaskDownloadingHashMap )
+		{
+			mTaskDownloadingHashMap.remove( task.id );
+		}
+		synchronized ( mBlockDownloadThread )
+		{
+			if ( id >= 0 && id < THREAD_MAX )
+			{
+				mBlockDownloadThread[id] = null;
+			}
+		}
+	}
+
+	public void run()
+	{
+		while ( true )
+		{
+			try
+			{
+				Thread.sleep(50);
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+			for (int i = 0; i < THREAD_MAX; i++)
+			{
+				if ( mBlockDownloadThread[i] == null )
+				{
+					BlockDownloadTask task = getTask();
+					if ( task != null )
+					{
+						synchronized ( mTaskDownloadingHashMap )
+						{
+							mTaskDownloadingHashMap.put( task.id, task );
+						}
+						mBlockDownloadThread[i] = new BlockDownloadThread(i, task);
+						mBlockDownloadThread[i].start();
+						//MVApiLog.e( "startTask", "id="+i+";task="+task.id );
+					}
+				}
+			}
+		}
+	}
+
+	// 下载任务
+	public class BlockDownloadTask
+	{
+		public String id;
+		public BlockRect block;
+
+		public BlockDownloadTask( BlockRect block )
+		{
+			this.id = block.mLevel + "_"+ block.mBlockXY[0] + "_" + block.mBlockXY[1];
+			this.block = block;
+		}
+	}
+
+	// 工作线程
+	public class BlockDownloadThread extends Thread
+	{
+		public int mThdID = -1;
+		private BlockDownloadTask mTask = null;
+		private String mHttpUrl = null;
+
+		public BlockDownloadThread( int id, BlockDownloadTask task )
+		{
+			mThdID = id;
+			mTask = task;
+			mHttpUrl = MVApi.getServerUrlSetting().strVectorMapUrl + 
+					ProtocolDef.METHOD_GETMCMDN + 
+					"block=" + task.block.mLevel + 
+					task.block.mBlockXY[0] + "." + 
+					task.block.mBlockXY[1];
+		}
+
+		public void run()
+		{
+			boolean bFileOk = false;
+			String filePath = checkFilePath( mTask );
+			File fileDest = new File( filePath );
+			if ( fileDest.exists() )
+			{
+				BlockDownloadPool.mthis.finishTask( mThdID, mTask );
+				return;
+			}
+			String filePath2 = filePath + "_tmp";
+			File file = new File( filePath2 );
+			try
+			{
+				file.createNewFile();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+				BlockDownloadPool.mthis.finishTask( mThdID, mTask );
+				return;
+			}
+
+			HttpURLConnection conn = null;
+			InputStream is = null;
+			FileOutputStream fos = null;
+			try
+			{
+				URL url = new URL(mHttpUrl);
+				try
+				{
+					conn = (HttpURLConnection) url.openConnection();
+					conn.connect();
+					is = conn.getInputStream();
+					fos = new FileOutputStream(file);
+					do
+					{
+						if (conn.getResponseCode() >= 400)
+						{
+							// 连接超时
+							break;
+						}
+						int numRead = 0;
+						byte[] header = new byte[3];
+						numRead = is.read(header,0,3);
+						if ( numRead < 3 )
+						{
+							// 异常
+							break;
+						}
+						if ( header[2] <= 0 )
+						{
+							bFileOk = true;
+							break;
+						}
+						byte[] blockheader = new byte[13];
+						numRead = is.read(blockheader,0,13);
+						if ( numRead < 13 )
+						{
+							// 异常
+							break;
+						}
+
+						byte[] buf = new byte[512];
+						do 
+						{
+							if (is != null)
+							{
+								numRead = is.read(buf);
+								if (numRead <= 0)
+								{
+									bFileOk = true;
+									break;
+								}
+								else
+								{
+									fos.write(buf, 0, numRead);
+								}
+							}
+							else
+							{
+								break;
+							}
+						} while (true);
+
+					} while ( false );
+				}
+				catch (IOException e)
+				{
+					file.delete();
+					//file.renameTo( fileDest );
+					e.printStackTrace();
+				}
+				finally
+				{
+					try
+					{
+						if ( bFileOk )
+						{
+							file.renameTo( fileDest );
+						}
+						else
+						{
+							file.delete();
+						}
+						if(null != fos)
+						{
+							fos.close();
+						}
+						if(null != is)
+						{
+							is.close();
+						}
+						if(null != conn)
+						{
+							conn.disconnect();
+						}
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+				}
+			}
+			catch (MalformedURLException e)
+			{
+				file.delete();
+				//file.renameTo( fileDest );
+				e.printStackTrace();
+			}
+			//MVApiLog.e( "DownloadMgrThd", "mThdID="+mThdID+";mTask="+mTask.id );
+			//MVApiLog.e( "DownloadMgrThd", "filepath="+filePath );
+			BlockDownloadPool.mthis.finishTask( mThdID, mTask );
+		}
+
+		private String checkFilePath( BlockDownloadTask task )
+		{
+			String filePath = MVApi.mVectorPath + mTask.block.mLevel + "00/";
+			MVApi.checkFolderExist( filePath );
+
+			String str = MCMDNCoordTrans.toHexString(mTask.block.mMeshXY[0]/16);
+		    filePath += str;
+		    filePath += "/";
+		    MVApi.checkFolderExist( filePath );
+
+		    str = MCMDNCoordTrans.toHexString(mTask.block.mMeshXY[1]/16);
+		    filePath += str;
+		    filePath += "/";
+		    MVApi.checkFolderExist( filePath );
+
+		    str = MCMDNCoordTrans.toHexString(mTask.block.mMeshXY[0]/4);
+		    filePath += str;
+		    str = MCMDNCoordTrans.toHexString(mTask.block.mMeshXY[1]/4);
+		    filePath += str;
+		    filePath += "/";
+		    MVApi.checkFolderExist( filePath );
+
+		    str = MCMDNCoordTrans.toHexString(mTask.block.mBlockXY[0]);
+		    filePath += str;
+		    str = MCMDNCoordTrans.toHexString(mTask.block.mBlockXY[1]);
+		    filePath += str;
+		    filePath += ".mm";
+			return filePath;
+		}
+		
+	}
+	
+	
+	
+}
+

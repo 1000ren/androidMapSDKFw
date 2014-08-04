@@ -1,0 +1,52 @@
+package com.ctfo.mvapi.map;
+
+
+/**
+ * @author fangwei
+ * 
+ * 地图管理，绘制相关常量定义
+ * 
+ */
+public class MapDef
+{
+	// 系统状态栏和标题栏高度
+	public final static int TITLE_HEIGHT = 50;
+	// 地图切片的高和宽
+	public final static int tileW = 256;
+	public final static int tileH = 256;
+	// 删格图片像素数
+	public final static int FILE_SIZE_MAX = 256;
+	// 底层绘制的高和宽
+	public final static int bufTileW = 256;
+	public final static int bufTileH = 256;
+
+	// 72, 0, 136, 64
+	// 中国地图范围
+	// 左边界
+	public final static double LEFTLON = 60.0;
+	// 右边界
+	public final static double RIGHTLON = 156.0;
+	// 下边界
+	public final static double DOWNLAT = 0.0;
+	// 上边界
+	public final static double UPLAT = 64.0;
+	// 最小级数
+	public final static byte minZoom = 4;
+	// 最大级数
+	public final static byte maxZoom = 18;
+
+	// 默认中心点经纬度
+	public final static double cLon = 116.352476;
+	public final static double cLat = 39.940995;
+	// 默认地图比例尺等级
+	public final static int cZoom = 10;
+
+	// 移动单元距离-10个像素
+	public final static byte UDdis = 11;
+	public final static byte LRdis = 18;
+
+	// 版权申明
+	public final static String API_COPYRIGHT = "© 2014 Ctfo";
+
+
+}

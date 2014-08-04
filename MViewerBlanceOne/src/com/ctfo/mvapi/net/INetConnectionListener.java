@@ -1,0 +1,22 @@
+package com.ctfo.mvapi.net;
+
+import android.net.ConnectivityManager;
+
+/**
+ * 网络连接监听
+ * @author gyx
+ *
+ */
+public interface INetConnectionListener {
+
+	/**
+	 * 获取网络连接Manager
+	 * @return
+	 */
+	public ConnectivityManager getConnectivityManager();
+	/**
+	 * 获取APN
+	 * @return
+	 */
+	public APN getCurrentAPN();
+}

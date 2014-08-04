@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 227
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol
+END
+GetBusStationListRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 257
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol/GetBusStationListRequest.java
+END
+GetBusStopListRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol/GetBusStopListRequest.java
+END
+GetBusLineListRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol/GetBusLineListRequest.java
+END
+GetBusStationListResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 258
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol/GetBusStationListResponse.java
+END
+GetBusStopListResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 255
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol/GetBusStopListResponse.java
+END
+GetBusLineListResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 255
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mviewer/protocol/GetBusLineListResponse.java
+END

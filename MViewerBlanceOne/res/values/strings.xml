@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MViewerActivity!</string>
+    <string name="app_name">MViewer</string>
+
+    <!-- 菜单 -->
+    <string name="menu_appupdate">检查更新</string>
+    <string name="menu_about">关于我们</string>
+    <string name="menu_exit">退出</string>
+    <string name="app_exit">确定退出吗？</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="menu_backpos">回原位</string>
+    <string name="menu_jump">跳转</string>
+    <string name="menu_rotate">旋转</string>
+    <string name="menu_perspective">透视</string>
+    <string name="menu_clearsrc">清屏</string>
+    <string name="menu_clearcache">清除缓存</string>
+    <string name="menu_searchstation">查询站点</string>
+    <string name="menu_searchline">查询线路</string>
+    <string name="menu_searchpoi">查询POI</string>
+    <string name="menu_compasszie">设置指南针位置</string>
+    
+
+    <string name="appupdate_1">当前版本：</string>
+    <string name="appupdate_3">检查更新：</string>
+    <string name="appupdate_4">点击 “检查更新”如有软件更新，系统自动下载；下载完成后，按系统提示安装即可。</string>
+    <string name="app_update">软件更新</string>
+    <string name="update_tip">发现新版本，是否更新？(更新最好采用wifi网络)\n</string>
+    <string name="update_enforce_tip">发现重要新版本，为了不影响使用请立即更新！(提示：若不更新，当前版本无法正常使用。更新最好采用wifi网络)\n</string>
+    <string name="update_now">立即下载</string>
+    <string name="update_later">以后再说</string>
+    <string name="update_err">更新服务异常，请稍后再试！</string>
+    <string name="update_noneed">您现在使用的已经是最新版本。</string>
+    <string name="page_up">点击查看上一页记录</string>
+    <string name="page_down">点击查看下一页记录</string>
+    <string name="sdcard_miss">未发现SD卡，请插入SD卡后再试。</string>
+        
+
+        
+        
+        
+    <string name="loading">加载中</string>
+        
+    <!-- error string -->
+    <string name="error_validity_reginfo_notexisted">注册信息不存在</string>
+    <string name="error_validity_activeinfo_notexisted">激活信息不存在</string>
+    <string name="error_validity_check_failed">地图校验失败</string>
+    <string name="error_workspace_init_mapcfg">地图配置引擎启动失败</string>
+    <string name="error_workspace_init_mapengine_mainmapfile">地图数据引擎启动时加载主图失败</string>
+    <string name="error_workspace_init_mapengine_adminfile">地图数据引擎启动时加载行政区失败</string>
+    <string name="error_workspace_init_mapquery_poifile">地图空间查询引擎启动时加载兴趣点失败</string>
+    <string name="error_workspace_init_mapdisplay">地图渲染引擎启动失败</string>
+    <string name="error_workspace_init_routeplan_modefile">路径规划引擎启动时加载规划权值失败</string>
+    <string name="error_workspace_init_routeplan_regionfile">路径规划引擎启动时加载规划数据失败</string>
+    <string name="error_workspace_init_routeplan_mainmapfile">路径规划引擎启动时加载主图失败</string>
+    <string name="error_workspace_init_routeplan_mapengine">路径规划引擎启动时加载地图数据引擎失败</string>    
+    
+    <!-- titile activity-->
+    <string name="title_warnning">GPS导航</string>
+    
+    <!-- warnning -->
+    <string name="warnning_section_1">警告</string>
+    <string name="warnning_section_2">本系统所提供地图可能与实际路况有所不同，计算出的路径仅作为参考 。为了您的安全，在驾驶过程中请尽量避免操作本导航仪，务必在遵守交通规则的前提下使用本系统。
+    </string>
+    <string name="warnning_section_3">若因您未正确使用本系统而导致交通事故或遭受其它损失，本产品的开发、生产、销售者均将不承担任何责任。                     
+    </string>
+    <string name="warnning_section_4">注意：在系统使用中，将不再显示类似的提示。
+    </string>
+    <string name="warnning_section_5">下次不再提示该信息
+    </string>
+    
+    <!-- text widget-->
+    <string name="text_agree">同意</string>
+    <string name="text_disagree">不同意</string>
+    <string name="text_hint_exitnavi">您确定要退出导航吗？</string>
+    <string name="text_hint_addtofavorite_success">已添加到收藏夹</string>
+    <string name="text_hint_addtofavorite_failed">收藏失败</string>
+    
+    <!-- Set Main -->
+    <string name="Set_GPS">导航</string>
+    <string name="Set_Show">显示设置</string>
+    <string name="Set_Voice">语音</string>
+    <string name="Set_Point">兴趣点</string>
+    <string name="Set_Remind">提醒</string>
+    <string name="Set_View_Style">视图风格</string>
+    <string name="Set_GPS_Info">GPS信息</string>
+    <string name="Set_Backup">备份</string>
+    <string name="Set_Power_Mode">智能省电</string>
+    
+    <!-- GPS INFO -->    
+    <string name="orientation_success">定位成功</string>
+    <string name="orientation_fail">定位中</string>
+    <string name="direction_str0">正北</string>
+    <string name="direction_str1">正东</string>
+    <string name="direction_str2">正南</string>
+    <string name="direction_str3">正西</string>
+    <string name="direction_str4">北偏东</string>
+    <string name="direction_str5">东偏北</string>
+    <string name="direction_str6">东偏南</string>
+    <string name="direction_str7">南偏东</string>
+    <string name="direction_str8">南偏西</string>
+    <string name="direction_str9">西偏南</string>
+    <string name="direction_str10">西偏北</string>
+    <string name="direction_str11">北偏西</string>
+    
+    <string name="gps_info_status">状态</string>
+    <string name="gps_info_high">高度</string>
+    <string name="gps_info_direction">方向</string>
+    <string name="gps_info_speed">速度</string>
+    <string name="gps_info_latlong">经纬度</string>
+    <string name="gps_info_datetime">日期/时间(卫星)</string>
+    
+    <!-- BACK UP -->
+    <string name="back_up_str1">将当前导航系统中的历史记录、收</string> 
+    <string name="back_up_str2">藏夹、设置参数等数据备份到手机</string> 
+    <string name="back_up_str3">存储卡</string> 
+    <string name="back_up_str4">恢复为手机存储卡中上次备份的记</string> 
+    <string name="back_up_str5">录，并替换当前系统中的数据</string> 
+    <string name="back_up_str6">恢复为手机至初始状态</string> 
+    
+    <!-- MAP SHOW -->    
+    <string name="map_show_south_style">南方</string>
+    <string name="map_show_north_style">北方</string>
+    <string name="map_show_altiplano_style">高原</string>
+    <string name="map_show_default_style">简洁</string>
+    
+    <string name="map_show_view">视图</string>
+    <!-- MAP VIEW -->    
+    <string name="map_view_auto_mode">自动切换</string>
+    <string name="map_view_day_mode">白天模式</string>
+    <string name="map_view_night_mode">夜晚模式</string>
+    <string name="map_view_mode_title">显示模式</string>
+    
+    <string name="map_view_OnOfflayout_title">从上次的位置开始显示</string>
+    
+    <string name="map_view_set_day_mode">白天时间设置</string>
+    <string name="map_view_set_night_mode">晚上时间设置</string>
+    
+    <!-- SET NAVIE -->    
+    <string name="set_navie_north_mode">地图正北</string>
+    <string name="set_navie_rotate_mode">图随车转</string>
+    <string name="set_navie_25D_mode">透视模式</string>
+    
+    <string name="set_navie_OnOfflayout1">导航中手动缩放地图</string>
+    <string name="set_navie_OnOfflayout2">允许目的地在道路左侧</string>
+    
+    <!-- SET OVER SPEED -->    
+    <string name="set_over_speed_OnOfflayout1">超速提醒</string>
+    <string name="set_over_speed_OnOfflayout2">限速摄像头提醒</string>
+    <string name="set_over_speed_OnOfflayout3">红灯摄像头提醒</string>
+    <string name="set_over_speed_OnOfflayout4">违章摄像头提醒</string>
+    <string name="set_over_speed_road1">高速</string>
+    <string name="set_over_speed_road2">都市高速</string>
+    <string name="set_over_speed_road3">国道</string>
+    <string name="set_over_speed_road4">省道</string>
+    <string name="set_over_speed_value">180</string>
+    
+    <!-- SET POI -->    
+    <string name="set_poi_str1">零售业</string>
+    <string name="set_poi_str2">汽车</string>
+    <string name="set_poi_str3">住宿</string>
+    <string name="set_poi_str4">休闲</string>
+    <string name="set_poi_str5">公共设施</string>
+    <string name="set_poi_str6">交通</string>
+    <string name="set_poi_str7">文化媒体</string>
+    <string name="set_poi_str8">其他</string>
+    
+    <!-- SET POWER -->
+    <string name="set_power_title">关闭背光灯</string>    
+    <string name="set_power_item1">从不关闭</string>
+    <string name="set_power_item2">智能省电</string>
+    
+    <string name="set_power_selectLayout_title">地图刷新频率</string>
+    <string name="set_power_selectLayout_item1">默认</string>
+    <string name="set_power_selectLayout_item2">高</string>
+    <string name="set_power_selectLayout_item3">中</string>
+    <string name="set_power_selectLayout_item4">低</string>
+    
+    <!-- SET VOICE -->
+    <string name="set_voice_title">语音</string> 
+    <string name="set_voice_item1">女声播报</string>
+    <string name="set_voice_item2">男声播报</string>
+    
+    <string name="set_voice_OnOffLayout1">声音开关</string>   
+    <string name="set_voice_OnOffLayout2">简略播报方式</string> 
+    
+    <!-- backup set -->
+    <string name="set_backup">备份</string>
+    <string name="set_load_backup">恢复</string>  
+    <string name="set_load_factory">恢复出厂设置</string>        
+    
+    <!-- map -->
+    <string name="text_map_menubtn_search">查 找</string>
+    <string name="text_map_menubtn_navi">导 航</string>
+    <string name="text_map_menubtn_favorite">收藏夹</string>
+    <string name="text_map_menubtn_history">历史地</string>
+    <string name="text_map_menubtn_searcharound">搜索周边</string>
+    <string name="text_map_menubtn_setting">设 置</string>
+    <string name="text_map_menubtn_service">服 务</string>
+    <string name="text_map_menubtn_exit">退 出</string>
+    <string name="text_map_bar_menu">菜 单</string>
+    <string name="text_map_bar_confirm">确 定</string>
+    <string name="text_map_bar_pause">暂 停</string>
+    <string name="text_map_bar_continue">继 续</string>
+    <string name="text_map_bar_stop">停 止</string>
+    <string name="text_map_bar_list">列 表</string>
+    <string name="text_map_bar_cancel">返 回</string>
+    <string name="text_map_bar_fastnavi1">回家</string>
+    <string name="text_map_bar_fastnavi2">去公司</string>
+    <string name="text_map_bar_fastnavi3">父母家</string>
+    <string name="text_map_bar_fastnavi4">购物</string>
+    <string name="text_map_bar_fastnavi5">看电影</string>
+    
+    <!-- favorite add -->
+    <string name="favorite_add_title_add">添加收藏夹</string>
+    <string name="favorite_add_title_edit">编辑收藏夹</string>
+    <string name="favorite_add_name">名称：</string>
+    <string name="favorite_add_address">地址：</string>
+    <string name="favorite_add_save">保存</string>
+    <string name="favorite_add_map">地图</string>
+    
+    
+    <!-- reginfo -->
+    <string name="text_reginfo_title">个人信息</string>
+    <string name="text_reginfo_user">当前帐号：</string>
+    <string name="text_reginfo_activetime">激活时间：</string>
+    
+    <!-- about -->
+    <string name="text_about_title">关于</string>
+    <string name="text_software_name">名称：</string>
+    <string name="text_software_version">版本信息：</string>
+    <string name="text_data_version">数据版本：</string>
+    <string name="text_check_version">审 图号：</string>
+    <string name="text_data_provider">数据提供：</string>    
+    <string name="text_check_number">GS(2010)1128号</string>    
+    <string name="text_dataprovider_name">北京四维图新科技股份有限公司</string> 
+    <string name="text_software_version_value">2.02.012.110506.GPS_240_320</string>
+    <string name="text_data_version_value">1.5.3.SW.2009Q4.20100910.01</string> 
+    
+    <!-- help -->
+     <string name="text_help_title">帮助</string>
+     <string name="text_help_poi">兴趣点图释</string>
+     <string name="text_help_map">地图图释</string>
+     <string name="text_help_func">功能图释</string>   
+    
+    <!--feeback--> 
+    <string name="text_feeback_title">意见反馈</string> 
+    <string name="text_teleno">电话：</string> 
+    <string name="text_opinion">您的意见：</string> 
+    <string name="text_btn_smsfeeback">短信反馈</string>
+    <string name="text_email">Email：</string>
+    
+    <!-- poiico --> 
+    <string name="text_poiico_title">兴趣点图释</string>
+    <string name="text_poiico_1">餐饮</string>  
+    <string name="text_poiico_2">麦当劳</string>  
+    <string name="text_poiico_3">肯德基</string>  
+    <string name="text_poiico_4">零售业</string>  
+    <string name="text_poiico_5">汽车</string>  
+    <string name="text_poiico_6">加油站</string>  
+    <string name="text_poiico_7">停车场</string>  
+    <string name="text_poiico_8">住宿</string>  
+    <string name="text_poiico_9">休闲娱乐</string>
+    <string name="text_poiico_10">公安机关</string>  
+    <string name="text_poiico_11">公共设施</string>  
+    <string name="text_poiico_12">医院</string>  
+    <string name="text_poiico_13">公园</string>  
+    <string name="text_poiico_14">公共厕所</string>  
+    <string name="text_poiico_15">交通</string>  
+    <string name="text_poiico_16">火车站</string>  
+    <string name="text_poiico_17">地铁站出入口</string>    
+    <string name="text_poiico_18">机场</string>
+    <string name="text_poiico_19">高速出入口</string>
+    <string name="text_poiico_20">高速服务区</string> 
+    <string name="text_poiico_21">高速停车站</string>  
+    <string name="text_poiico_22">收费站</string>  
+    <string name="text_poiico_23">文化媒体</string>  
+    <string name="text_poiico_24">超市</string>  
+    <string name="text_poiico_25">银行</string>  
+    <string name="text_poiico_26">邮局</string>  
+    <string name="text_poiico_27">教育</string>  
+    <string name="text_poiico_28">小区</string>  
+    <string name="text_poiico_29">大厦</string> 
+    <string name="text_poiico_30">其它</string>    
+    
+       <!-- func --> 
+    <string name="text_func_title">功能图释</string>  
+    <string name="text_func_1">查找</string>  
+    <string name="text_func_2">导航</string>  
+    <string name="text_func_3">收藏夹</string>  
+    <string name="text_func_4">历史地</string>  
+    <string name="text_func_5">搜索周边</string>  
+    <string name="text_func_6">设置</string>  
+    <string name="text_func_7">服务</string>  
+    <string name="text_func_8">退出</string>  
+    <string name="text_func_9">我的位置</string>
+    <string name="text_func_10">从这里出发</string>  
+    <string name="text_func_11">终点</string>  
+    <string name="text_func_12">添加途经地</string>  
+    <string name="text_func_13">置换</string>  
+    <string name="text_func_14">城市</string>  
+    <string name="text_func_15">多项查找</string>  
+    <string name="text_func_16">关键字</string>  
+    <string name="text_func_17">快拼</string>    
+    <string name="text_func_18">收藏</string>
+    <string name="text_func_19">查看地图</string>
+    <string name="text_func_20">绑定联系人</string> 
+    <string name="text_func_21">详细信息</string>  
+    <string name="text_func_22">导航</string>  
+    <string name="text_func_23">显示</string>  
+    <string name="text_func_24">语音</string>  
+    <string name="text_func_25">兴趣点</string>  
+    <string name="text_func_26">提醒</string>  
+    <string name="text_func_27">视图风格</string>  
+    <string name="text_func_28">GPS信息</string>  
+    <string name="text_func_29">备份</string> 
+    <string name="text_func_30">智能设置</string>  
+    <string name="text_func_31">白天时间设置</string> 
+    <string name="text_func_32">夜晚时间设置</string>  
+    <string name="text_func_33">个人信息</string>  
+    <string name="text_func_34">关于</string>  
+    <string name="text_func_35">意见反馈</string>  
+    <string name="text_func_36">帮助</string>  
+    <string name="text_func_37">编辑</string>  
+    <string name="text_func_38">分类查找</string>  
+    <string name="text_func_39">交叉路</string>  
+    <string name="text_func_40">返回</string> 
+    <string name="text_func_41">规划路线</string>
+    <string name="text_func_42">重新规划</string> 
+    <string name="text_func_43">路径概览</string>  
+    <string name="text_func_44">清除路径</string>  
+    <string name="text_func_45">行程详细</string>  
+    <string name="text_func_46">周边搜索</string>  
+    <string name="text_func_47">周边搜索</string>  
+    
+    <!-- mapicon -->
+    <string name="text_mapicon_title">地图图释</string>  
+    <string name="text_mapico_1">距终点距离</string>
+    <string name="text_mapico_2">时速</string>  
+    <string name="text_mapico_3">指北针</string>  
+    <string name="text_mapico_4">GPS信号</string>  
+    <string name="text_mapico_5">我的位置</string>  
+    <string name="text_mapico_6">音量</string>  
+    <string name="text_mapico_7">静音</string>  
+    <string name="text_mapico_8">加速</string>  
+    <string name="text_mapico_9">减速</string>  
+    <string name="text_mapico_10">放大</string>
+    <string name="text_mapico_11">缩小</string>  
+    <string name="text_mapico_12">左转</string>  
+    <string name="text_mapico_13">右转</string>  
+    <string name="text_mapico_14">直行</string>  
+    <string name="text_mapico_15">左前方行驶</string>  
+    <string name="text_mapico_16">右前方行驶</string>  
+    <string name="text_mapico_17">掉头</string>  
+    <string name="text_mapico_18">右后方行驶</string>    
+    <string name="text_mapico_19">盘桥</string>
+    <string name="text_mapico_20">入环岛</string>
+    <string name="text_mapico_21">进主路</string> 
+    <string name="text_mapico_22">出主路</string>  
+    <string name="text_mapico_23">驶离环岛</string>  
+    <string name="text_mapico_24">已达途经点1</string>  
+    <string name="text_mapico_25">已达途经点2</string>  
+    <string name="text_mapico_26">高架桥</string>  
+    <string name="text_mapico_27">隧道</string>  
+            
+    <!-- service --> 
+    <string name="text_service_title">服务</string>
+    
+    <!-- addressbook --> 
+    <string name="text_address">地址</string>
+    
+    <!-- direction -->
+    <string name="locating">定位中</string>
+    <string name="locate_failed">定位失败</string>
+    <string name="locate_failed_usecsimcard">定位失败!请使用C网卡!</string>
+    <string name="dir_north">正北</string>
+    <string name="dir_east">正东</string>
+    <string name="dir_south">正南</string>
+    <string name="dir_west">正西</string>
+    <string name="dir_north_east">北偏东</string>
+    <string name="dir_east_north">东偏北</string>
+    <string name="dir_east_south">东偏南</string>
+    <string name="dir_south_east">南偏东</string>
+    <string name="dir_south_west">南偏西</string>
+    <string name="dir_west_south">西偏南</string>
+    <string name="dir_west_north">西偏北</string>
+    <string name="dir_north_west">北偏西</string>
+    
+    <!-- turnning -->
+    <string name="turnning_left">左转</string>
+    <string name="turnning_right">右转</string>
+    <string name="turnning_forward">保持直行</string>
+    <string name="turnning_leftforward">左前方</string>
+    <string name="turnning_rightforward">右前方</string>
+    <string name="turnning_around">调头</string>
+    <string name="turnning_bridge">盘桥</string>
+    <string name="turnning_circle_in">进入环岛</string>
+    <string name="turnning_start">起始地</string>
+    <string name="turnning_end">目的地</string>
+    <string name="turnning_highroad_in">进主路</string>
+    <string name="turnning_highroad_out">出主路</string>
+    <string name="turnning_circle_out">驶离环岛</string>
+    <string name="turnning_enter">进入</string>
+    <string name="all_distance">总距离</string>
+    <string name="botton_gailan">"概  览"</string>
+    
+    
+    <!-- other -->
+    <string name="current_position">当前位置</string>
+    <string name="low_memory">内存不足，无法启动导航</string>
+    <string name="unknow_error">未知错误</string>
+    <string name="add_notyet">未添加</string>
+    <string name="add_done">已添加</string>
+    <string name="passpoint">途经地</string>
+    <string name="add_passpoint">添加途经地</string>
+    <string name="my_position">我的位置</string>
+    <string name="add_startpoint">添加起始地</string>
+    <string name="add_endpoint">添加目的地</string>
+    <string name="add_success">添加成功</string>
+    <string name="add_failed">添加失败</string>
+    <string name="add_failed_2">已添加到收藏夹</string>
+    <string name="save_successed">保存成功</string>
+    <string name="save_failed">保存失败</string>
+    
+    <string name="hint">提示</string>
+    <string name="inputphone_null">请输入电话号码</string>
+    <string name="inputemail_null">请输入Email地址</string>
+    <string name="inputopinion_null">请输入您的意见</string>
+    <string name="invalid_format_phonenumber">电话号码格式错误</string>  
+    <string name="invalid_format_email">Email地址格式错误</string>
+    <string name="bind_successed">绑定成功</string>
+    <string name="bind_failed">绑定失败</string>
+    <string name="send_sms_successed">已经发送</string>
+    <string name="send_sms_failed">发送失败，请检查SIM卡</string>
+    <string name="text_confirm">确定</string>
+    <string name="text_cancel">取消</string>
+    
+    <string name="advan_navi">一键导航</string>
+    <string name="to_home">回家</string>
+    <string name="to_company">去公司</string>
+    <string name="to_home_parent">父母家</string>
+    <string name="to_shopping">购物</string>
+    <string name="to_watchmovie">看电影</string>
+    <string name="exit_confirm">您确定要退出吗?</string>
+    <string name="notsupport">暂不支持</string>
+    
+    <!-- set plan point -->
+    <string name="setplanpt_s_equalto_e">起始地与目的地重复</string>
+    <string name="setplanpt_s_equalto_p">起始地与途经地重复</string>
+    <string name="setplanpt_e_equalto_s">目的地与起始地重复</string>
+    
+    <string name="setplanpt_p_equalto_s">途经地与起始地重复</string>
+    <string name="setplanpt_p_equalto_e">途经地与目的地重复</string>
+    <string name="setplanpt_p_equalto_p">途经地与途经地重复</string>
+    
+    <string name="setplanpt_p_nearto_s">途经地与起始地距离太近</string>
+    <string name="setplanpt_p_nearto_e">途经地与目的地距离太近</string>
+    <string name="setplanpt_p_nearto_p">途经地与途经地距离太近</string>
+
+    <!-- route plan -->
+    <string name="routeplan_procedding">路径计算中,请稍候</string>  
+    <string name="routeplan_matchbegion_failed">起点离规划道路太远，请尽量靠近道路设置</string>
+    <string name="routeplan_matchpass_failed">途经点离规划道路太远，请尽量靠近道路设置</string>
+    <string name="routeplan_matchend_failed">终点离规划道路太远，请尽量靠近道路设置</string>
+    <string name="routeplan_loaddata_failed">加载数据失败</string>
+    <string name="routeplan_memoryalloc_failed">内存分配失败</string>
+    <string name="routeplan_failed">路径规划失败</string>
+    <string name="routeplan_createguideroute_failed">创建引导路径失败</string>
+    
+    <!-- query -->
+    <string name="query_procedding">正在搜索，请稍候</string>
+    <string name="query_failed">查询失败</string>
+
+    <!-- backup -->
+    <string name="login_failed_toexit">登录失败,确认退出</string>
+    <string name="backup_success">备份成功</string>
+    <string name="backup_failed">备份失败</string>
+    <string name="backup_failed_sdcard_notexist">SD卡不存在,备份失败</string>
+    <string name="backup_loadsuccess">恢复成功</string>
+    <string name="backup_loadfailed_filenotexist">备份文件不存在,恢复失败</string>
+    <string name="quick_search">快拼查找</string>
+    <string name="keyword_search">关键字查找</string>
+    <string name="on">开</string>
+    <string name="off">关</string>
+    <string name="startAddress">起始地</string>
+    <string name="endAddress">目的地</string>
+    <string name="lookMap">查看地图</string>
+    <string name="search">查 找</string>
+    <string name="sort">分 类</string>
+    <string name="cross">交叉路</string>
+    <string name="history">历史地</string>
+    <string name="collection">收藏夹</string>
+    <string name="map">地 图</string>
+    <string name="route_whole">路线概览</string>
+    <string name="route_detail">路线信息</string>
+    <string name="route_clear">清除路线</string>
+    <string name="route_plan">重新规划</string>
+    <string name="selectCity">城市选择</string>
+    <!-- Route -->
+    <string name="route_text">"路 线"</string>
+    <string name="add_way">"添加途经地"</string>
+    <string name="add_way_1">"已添加1途经地"</string>
+    <string name="add_way_2">"已添加2途经地"</string>
+    <string name="add_destination">添加目的地</string>
+    <string name="my">我的位置</string>
+    <string name="see_route">"查看路线"</string>
+    <string name="gps">"导    航"</string>
+    <string name="simulate">"模拟导航"</string>
+    <string name="dialog_text">"路径计算中，请稍候"</string>
+    <string name="list_5">". . . . . ."</string>
+    <string name="navi_rule_select">"导航规则选择"</string>
+    <string name="speed_priority">"高速优先"</string>
+    <string name="short_distance_priority">"最短距离优先"</string>
+    <string name="general_road">"普通道路"</string>
+    <string name="biteandsup_t">"餐   饮"</string>
+    <string name="hotel_t">"住   宿"</string>
+    <string name="destination_t">"导 航 到"</string>
+    <string name="start_t">"从这里出发"</string>
+    <string name="gasstation_t">"加 油 站"</string>
+    <string name="all_menu4_t">"搜索周边"</string>
+    <string name="addfavorite_t">"添加收藏"</string>
+    <string name="g_super_t">"超   市"</string>
+    <string name="info_t">"详细信息"</string>
+    <string name="park_t">"停 车 场"</string>
+    <string name="allpoi_t">"分类查找"</string>
+    
+    <string name="searchmaptext">查看地图</string>
+    <string name="friendtext">绑定联系人</string>
+    <string name="navitotext">导航到</string>
+    <string name="setouttext">从此处出发</string>
+    <string name="searcharoundtext">搜索周边</string>
+    <string name="waytext">设为途经地</string>
+    <string name="confirmtext">确定</string>
+    <string name="setsetouttext">设为起始地</string>
+    <string name="setnavitotext">设为目的地</string>
+    <string name="collect">收藏</string>
+    <string name="poidetailtext">兴趣点详细</string>
+    <string name="prepage">上一页</string>
+    <string name="nextpage">下一页</string>
+    <string name="initializecity">北京市</string>
+    
+    <string name="sort_1">餐饮</string>
+    <string name="sort_2">交通</string>
+    <string name="sort_3">零售</string>
+    <string name="sort_4">住宿</string>
+    <string name="sort_5">汽车</string>
+    <string name="sort_6">休闲</string>
+    <string name="sort_7">银行</string>
+    <string name="sort_8">公共设施</string>
+    <string name="sort_9">商务设施</string>
+    <string name="sort_10">公司企业</string>
+    <string name="sort_11">团体社区</string>
+    <string name="sort_12">教育卫生</string>
+    <string name="sort_13">营业厅</string>
+    
+    <string name="add_collection">添加</string>
+    <string name="delete_collection">删除</string>
+    <string name="search_title_text">搜索周边</string>
+    <string name="search_text">搜索</string>
+    <string name="place1">地址1</string>
+    <string name="search_recently">最近搜索：</string>
+
+    <string name="select_all">全选</string>
+    <string name="all_clear">全清</string>
+    <string name="shortcut_text">一键导航</string>
+    <string name="home_page_text">首页</string>
+    <string name="life_text">生活</string>
+    <string name="work_text">工作</string>
+    <string name="other_text">其他</string>
+    <string name="not_add_text">未添加</string>
+    
+    <string name="result_tiltle">搜索结果</string>
+    <string name="searchsortround_tilte">周边分类查找</string>
+    <string name="search_infos">"当前搜索结果"</string>
+    <string name="search_error">查询结果为零</string>
+    <string name="search_key_no_null">搜索关键字不能为空</string>
+    
+    <string name="delete_error">至少需要选中一个POI点，才能删除!</string>
+    <!-- test -->
+    <string name="test_optroutes">optroutes</string>
+    <string name="test_simunavi">simunavi</string>
+    <string name="test_realnavi">realnavi</string>
+    <string name="test_exit">exit</string>
+    <!-- Toast -->
+    <string name="Toast_address_null">"地址不应为空"</string>
+    <string name="error_favorite_name">%s别名不应为空</string>
+    <!-- hotline -->
+    <string name="hotline">"4008881388"</string>
+    <string name="process_exit">"系统内存不足，导航已退出！"</string>
+
+</resources>

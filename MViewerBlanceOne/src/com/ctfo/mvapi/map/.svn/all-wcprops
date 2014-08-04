@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 220
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2541/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map
+END
+CompassView.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2551/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/CompassView.java
+END
+OverlayItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/OverlayItem.java
+END
+RouteOverlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 238
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2041/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/RouteOverlay.java
+END
+MapPosType.java
+K 25
+svn:wc:ra_dav:version-url
+V 236
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2068/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapPosType.java
+END
+PerspectiveTrans.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2497/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/PerspectiveTrans.java
+END
+MapManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 236
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapManager.java
+END
+ItemizedOverlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2451/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/ItemizedOverlay.java
+END
+MapViewListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2259/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapViewListener.java
+END
+TileMapCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 238
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/TileMapCache.java
+END
+Overlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 233
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/Overlay.java
+END
+DisplayInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/DisplayInfo.java
+END
+MapMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 233
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2069/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapMode.java
+END
+IconManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2246/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/IconManager.java
+END
+MapStyleConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2057/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapStyleConfig.java
+END
+MapDrawView.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2576/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapDrawView.java
+END
+PoiOverlay.java
+K 25
+svn:wc:ra_dav:version-url
+V 236
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2041/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/PoiOverlay.java
+END
+MapActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2186/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapActivity.java
+END
+LayerDef.java
+K 25
+svn:wc:ra_dav:version-url
+V 234
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2041/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/LayerDef.java
+END
+MapTile.java
+K 25
+svn:wc:ra_dav:version-url
+V 233
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapTile.java
+END
+MapDef.java
+K 25
+svn:wc:ra_dav:version-url
+V 232
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2553/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapDef.java
+END
+MCMDNCoordTrans.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2183/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MCMDNCoordTrans.java
+END
+MapSnapshot.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2041/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapSnapshot.java
+END
+LocalTileParsePool.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2523/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/LocalTileParsePool.java
+END
+TileTextRender.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2575/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/TileTextRender.java
+END
+MapDisplay.java
+K 25
+svn:wc:ra_dav:version-url
+V 236
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2553/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapDisplay.java
+END
+MapScaleParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2453/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapScaleParam.java
+END
+MapView.java
+K 25
+svn:wc:ra_dav:version-url
+V 233
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2575/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapView.java
+END
+MapUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 233
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2211/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapUtil.java
+END
+BlockDownloadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2538/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/BlockDownloadPool.java
+END
+MapController.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2575/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/MapController.java
+END
+DrawMapThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2523/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/DrawMapThread.java
+END
+LayerCtrlManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/svn/ZC_%E7%A0%94%E5%8F%91%E4%BA%8C%E9%83%A8/!svn/ver/2041/01_%E4%BA%A7%E5%93%81%E5%8C%BA/03_MCMDN%E5%BC%95%E6%93%8E/01_%E5%BC%80%E5%8F%91%E5%8C%BA/02_%E4%BB%A3%E7%A0%81/01_trunk/MVAPI/V1/MViewer/src/com/palmgo/mvapi/map/LayerCtrlManager.java
+END

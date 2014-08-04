@@ -1,0 +1,439 @@
+package com.palmgo.mvapi.map;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Point;
+import android.graphics.Rect;
+
+import com.palmgo.mvapi.entities.AnnotationItem;
+import com.palmgo.mvapi.entities.POINT;
+import com.palmgo.mvapi.entities.RoadNameItem;
+import com.palmgo.mvapi.entities.TileTextInfo;
+
+
+/**
+ * @author liujingzhou
+ * 
+ * Tile文字绘制类
+ * 
+ */
+public class TileTextRender
+{
+	// 地图显示控制对象
+    private MapDisplay mMapDisplay = null;
+    // TileMap缓存管理
+    private TileMapCache mTileMapCache = null;
+    // 图标管理类
+    private IconManager mIconManager = null;
+    // 屏幕中心点坐标
+    private Point mPtCenter = null;
+    // 画布 
+    private Canvas mCanvas = null;
+    private Matrix mMatrix = null;
+    // 当前角度
+    float mAngle = 0f;
+    // 是否透视
+    boolean mIsPerspectiveTrans = false;
+    // 绘制文字
+    private Paint mPoiTxtPaint = new Paint();
+    private Paint mRoadTxtPaint = new Paint();
+    // 同一道路的文字
+    private List<RoadNameItem> mRNameItemList = new ArrayList<RoadNameItem>();
+
+    // 显示TileText的数量
+    private final static int MAX_TILETEXT_NUM = 30;
+    
+    
+	public TileTextRender( Context context, Point srcCenter, 
+			MapDisplay mapDisplay, TileMapCache tileMapCache )
+	{
+		mPtCenter = srcCenter;
+		mIconManager = new IconManager(context);
+		mMapDisplay = mapDisplay;
+		mTileMapCache = tileMapCache;
+
+		mPoiTxtPaint.setAntiAlias(true);
+		mPoiTxtPaint.setStyle(Style.FILL);
+		mPoiTxtPaint.setColor(Color.DKGRAY);
+
+		mRoadTxtPaint.setAntiAlias(true);
+		mRoadTxtPaint.setStyle(Style.FILL);
+		mRoadTxtPaint.setColor(Color.GRAY);
+	}
+
+	/**
+     * 绘制文字信息
+     * @param canvas
+     */
+	public void drawTileText( final Canvas canvas,Matrix matrix, float angle, boolean isPerspectiveTrans ,int type)
+	{
+		if ( canvas == null )
+		{
+			return;
+		}
+		mCanvas = canvas;
+		mMatrix = matrix;
+		mAngle = angle;
+		mIsPerspectiveTrans = isPerspectiveTrans;
+
+		// adjust some style
+		if ( mIsPerspectiveTrans )
+		{
+			mPoiTxtPaint.setTextSize( 22 );
+		}
+		else
+		{
+			mPoiTxtPaint.setTextSize( 16 );
+		}
+		
+		if ( mIsPerspectiveTrans )
+		{
+			mRoadTxtPaint.setTextSize( 24 );
+		}
+		else
+		{
+			mRoadTxtPaint.setTextSize( 18 );
+		}
+
+    	List<String> grcList = new ArrayList<String>();
+    	grcList.addAll(mTileMapCache.getTileList());
+    	
+    	// 优先绘制当前屏幕覆盖的TileText
+    	int size = (grcList.size()>MAX_TILETEXT_NUM) ? MAX_TILETEXT_NUM : grcList.size();
+    	for( int i=0; i<size; i++ )
+    	{
+    		String tile = grcList.get(i);
+    		drawTileText( tile ,type);
+    	}
+	}
+	
+	/**
+     * 根据tile来绘制文字信息
+     * @param canvas
+     * @param tile
+     */
+	private void drawTileText(String tile,int type)
+    {
+		TileTextInfo tileTextInfo = mTileMapCache.queryTileTextInfo(tile);
+		if ( tileTextInfo != null )
+		{
+			if(type == 1)
+			{
+				drawRoadName(tileTextInfo);
+			}
+			else
+			{
+				drawPoi(tileTextInfo);
+			}
+		}
+    }
+
+	/**
+     * 绘制道路名称
+     * @param tileTextInfo
+     * 
+     */
+	private void drawRoadName( TileTextInfo tileTextInfo )
+	{
+		RoadNameItem[] roadNameItems = tileTextInfo.mRoadNameItems;
+		if ( roadNameItems != null && roadNameItems.length > 0 )
+		{
+			RoadNameItem itemPre = roadNameItems[0];
+			for ( RoadNameItem item : roadNameItems )
+			{
+				if ( item == null )
+				{
+					continue;
+				}
+				if ( item.id == itemPre.id )
+				{
+					mRNameItemList.add( item );
+				}
+				else
+				{
+					drawRoadName();
+					itemPre = item;
+					mRNameItemList.add(item);
+				}
+			}
+			// 最后一段道路
+			drawRoadName();
+		}
+	}
+
+	/**
+	 * 调整绘制道路名称
+	 */
+	private void drawRoadName()
+	{
+		if ( mRNameItemList.size() <= 1 )
+		{
+			mRNameItemList.clear();
+			return;
+		}
+		int y = 0;
+		if(mIsPerspectiveTrans)
+		{
+			y = 40;
+		}
+		else
+		{
+			y = 30;
+		}
+		boolean bInverse = mAngle==0 ? false : judgeInverse();
+		for (int i = 0; i < mRNameItemList.size(); i++)
+		{
+			RoadNameItem item1 = mRNameItemList.get(i);
+			RoadNameItem item2 = item1;
+			if ( bInverse )
+			{
+				item2 = mRNameItemList.get(mRNameItemList.size()-1-i );
+			}
+			POINT point = mMapDisplay.map2Display( item2.longitude, item2.latitude );
+			if ( null != item1.name && !item1.name.equals("") )
+			{
+				mCanvas.rotate( -mAngle, point.x+12, point.y-12 );
+				drawTextFrame(item1.name, point.x, point.y+y, mRoadTxtPaint);
+				mCanvas.rotate( mAngle, point.x+12, point.y-12 );
+			}
+		}
+		mRNameItemList.clear();
+	}
+	
+	/**
+	 * 在透视模式下根据Y轴的坐标来设置文字的大小
+	 * @param y
+	 */
+	private void setTextSize(float y)
+	{
+		if ( !mIsPerspectiveTrans )
+		{
+			return;
+		}
+		int num = (int)y/100;
+		
+		if(num<2)
+		{
+			mPoiTxtPaint.setTextSize( 8 );
+			mRoadTxtPaint.setTextSize( 8 );
+		}
+		else if(num>=2 && num<4)
+		{
+			mPoiTxtPaint.setTextSize( 12 );
+			mRoadTxtPaint.setTextSize( 10 );
+		}
+		else if(num>=4 && num<6)
+		{
+			mPoiTxtPaint.setTextSize( 16 );
+			mRoadTxtPaint.setTextSize( 12 );
+		}
+		else if(num>=6 && num<8)
+		{
+			mPoiTxtPaint.setTextSize( 20 );
+			mRoadTxtPaint.setTextSize( 14 );
+		}
+		else
+		{
+			mPoiTxtPaint.setTextSize( 22 );
+			mRoadTxtPaint.setTextSize( 16 );
+		}
+	}
+	
+	/**
+     * 绘制Poi名称
+     * @param tileTextInfo
+     * 
+     */
+	private void drawPoi( TileTextInfo tileTextInfo )
+	{
+		// 绘制文字 1:右，4:左
+		AnnotationItem[] mAnnotationItems = tileTextInfo.mAnnotationItems;
+		if(null != mAnnotationItems && mAnnotationItems.length>0)
+		{
+			for(AnnotationItem annotationItem : mAnnotationItems)
+			{
+				Bitmap icon = mIconManager.getBitmapByCode(MapUtil.getAnnotationPic(annotationItem.code));
+				POINT point = mMapDisplay.map2Display(annotationItem.longitude, annotationItem.latitude);
+				float[] pts = {point.x, point.y};
+				mMatrix.mapPoints(pts);
+				
+//				mCanvas.rotate( -mAngle, pts[0], pts[1] );
+				if(null != icon)
+				{
+					//绘制图标
+					mCanvas.drawBitmap(icon, pts[0]-6, pts[1]-6, null);
+				}
+				if(null != annotationItem.name && !annotationItem.name.equals(""))
+				{
+					annotationItem.name = annotationItem.name.trim();
+					//获取行数
+					int row = 1;
+					if(annotationItem.name.length()>5)
+					{
+						row = 2;
+					}
+					
+					//每行显示的字数
+					int rowTextSize = annotationItem.name.length()/row;
+					//最后一行显示的字数
+					int lastTextSize = annotationItem.name.length()%row;
+					if(0 != lastTextSize)
+					{
+						rowTextSize = rowTextSize + 1;
+						lastTextSize = annotationItem.name.length()%rowTextSize;
+					}
+					
+					setTextSize(pts[1]);
+					//每次截取的字符串的位置
+					int currentRow = 0;
+					//获取文字的高度
+					int sizeHeight = (int)mPoiTxtPaint.getTextSize();
+					//获取字符的宽度
+					String text = annotationItem.name.substring(currentRow, rowTextSize);
+					Rect rect = new Rect();             
+					mPoiTxtPaint.getTextBounds(text, 0, rowTextSize, rect);
+					int width = rect.width();
+					String name = "";
+					for(int i=0;i<row;i++)
+					{
+						//获取每次显示的字
+						if(i==row-1 && lastTextSize != 0)
+						{
+							name = annotationItem.name.substring(currentRow, currentRow+lastTextSize);
+						}
+						else
+						{
+							name = annotationItem.name.substring(currentRow, currentRow+rowTextSize);
+						}
+						float x = 0;
+						float y = 0;
+						if(annotationItem.labelDirect==4)
+						{
+							//向左写字
+							x = pts[0]-8-width;
+							y = (pts[1]+6)+(i*2)+(i*sizeHeight);
+						}
+						else if(annotationItem.labelDirect==1)
+						{
+							//向右写字
+							x = pts[0]+8;
+							y = (pts[1]+6)+(i*2)+(i*sizeHeight);
+						}
+						drawTextFrame( name, x, y, mPoiTxtPaint );
+
+						currentRow = currentRow+rowTextSize;
+					}
+				}
+//				mCanvas.rotate( mAngle, pts[0], pts[1] );
+			}
+		}
+
+	}
+
+	/**
+     * 文字描边
+     * @param canvas
+     * @param text
+     * @param x
+     * @param y
+     * @param paint
+     */
+    private void drawTextFrame( String text, float x, float y, Paint paint )
+    {
+    	int oldColor = paint.getColor();
+    	paint.setColor(Color.WHITE);
+    	mCanvas.drawText(text, x+2, y, paint);
+    	mCanvas.drawText(text, x-2, y, paint);
+    	mCanvas.drawText(text, x, y+2, paint);
+    	mCanvas.drawText(text, x, y-2, paint);
+    	mCanvas.drawText(text, x+2, y+2, paint);
+    	mCanvas.drawText(text, x-2, y-2, paint);
+    	mCanvas.drawText(text, x-2, y+2, paint);
+    	mCanvas.drawText(text, x+2, y-2, paint);
+    	paint.setColor( oldColor );
+    	mCanvas.drawText( text, x, y, paint );
+    }
+
+    /**
+     * 判断是否需要调整
+     * */
+    private boolean judgeInverse()
+    {
+    	// 根据角度判断是否需要调整绘制顺序
+		// 根据起始的两点来判断处理
+    	boolean bInverse = false;
+    	RoadNameItem itemStart = mRNameItemList.get(0);
+		RoadNameItem itemEnd = mRNameItemList.get(1);
+		if ( itemStart == null || itemEnd == null )
+		{
+			return bInverse;
+		}
+		POINT pointStart = mMapDisplay.map2Display( itemStart.longitude, itemStart.latitude );
+		POINT pointEnd = mMapDisplay.map2Display( itemEnd.longitude, itemEnd.latitude );
+		Point ptStart = transRotateCoord( pointStart );
+		Point ptEnd = transRotateCoord( pointEnd );
+		// 条件判断
+		int dx = ptStart.x - ptEnd.x;
+		int dy = ptStart.y - ptEnd.y;
+		double rat = 0;
+		if ( dx != 0 )
+		{
+			rat = Math.abs( dy*1.0 / dx ); // 正切值
+		}
+		// debug
+		/*if ( itemStart.name.compareTo("西")==0 && itemEnd.name.compareTo("直")==0 )
+		{
+			MVApiLog.e( "judgeInverse", "start ( x="+pointStart.x+",y="+pointStart.y+")-->(x="+ptStart.x+",y="+ptStart.y );
+			MVApiLog.e( "judgeInverse", "end ( x="+pointEnd.x+",y="+pointEnd.y+")-->(x="+ptEnd.x+",y="+ptEnd.y );
+			MVApiLog.e( "judgeInverse", "dx ="+dx+",dy="+dy+",rat="+rat );
+		}*/
+		if ( dx == 0 && dy < 0 )
+		{
+			bInverse = true;
+		}
+		else if ( dy == 0 && dx > 0 )
+		{
+			bInverse = true;
+		}
+		else if ( dx > 0 && dy > 0 && rat < 0.6 )
+		{
+			bInverse = true;
+		}
+		else if ( dx < 0 && dy < 0 && rat >= 0.6 )
+		{
+			bInverse = true;
+		}
+		else if ( dx > 0 && dy < 0 )
+		{
+			bInverse = true;
+		}
+		return bInverse;
+	}
+
+    /**
+     * 旋转模式下的坐标变换
+     */
+    private Point transRotateCoord( POINT point )
+    {
+    	// 以当前屏幕为中心原点的坐标
+    	// 以中心点旋转后的坐标
+    	double x = (point.x - mPtCenter.x)*Math.cos(Math.toRadians(-mAngle)) 
+    			- (mPtCenter.y - point.y)*Math.sin(Math.toRadians(-mAngle));
+		double y = (point.x - mPtCenter.x)*Math.sin(Math.toRadians(-mAngle)) 
+				+ (mPtCenter.y - point.y)*Math.cos(Math.toRadians(-mAngle));
+		Point pt = new Point();
+		pt.x = (int)(x + 0.5);
+		pt.y = (int)(y + 0.5);
+		return pt;
+    }
+    
+    
+}

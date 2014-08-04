@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_text">#FFFFFF</color>
+    <color name="color_text_fastnavi">#808080</color>
+    <color name="color_text_speed">#FFFF00</color>
+    <color name="color_text_black">#000000</color>
+    <color name="line_bus">#15afff</color>
+</resources>
